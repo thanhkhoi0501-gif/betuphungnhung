@@ -10,7 +10,7 @@
         body { background-color: #f0f2f5; color: #333; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
         .top-banner { background: #002b5e; color: #ffcc00; text-align: center; padding: 6px 15px; font-size: 12px; font-weight: bold; flex-shrink: 0; }
         
-        /* HEADER VÀ CĂN CHỈNH THANH TÌM KIẾM GỌN GÀNG */
+        /* HEADER VÀ THANH TÌM KIẾM CÂN BẰNG */
         header { background: #004aad; padding: 10px 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 100; }
         .search-container-pill { width: 100%; max-width: 650px; display: flex; align-items: center; background: white; border-radius: 30px; overflow: hidden; padding: 4px 6px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
 
@@ -52,8 +52,28 @@
         .btn-detail { flex: 1; background: #e8f1ff; color: #004aad; border: 1px solid #004aad; padding: 6px 2px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 11px; text-align: center; }
         .btn-buy { flex: 1; background: linear-gradient(90deg, #ff6600, #ff8800); color: white; border: none; padding: 6px 2px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; }
         @media (min-width: 768px) { .btn-detail, .btn-buy { padding: 8px; font-size: 13px; } }
+        
+        /* NÚT HOTLINE & WIDGET ZALO PHÍA DƯỚI GÓC PHẢI */
         .floating-hotline { position: fixed; bottom: 20px; right: 20px; background: #d70018; color: white; padding: 10px 16px; border-radius: 50px; font-weight: bold; font-size: 14px; text-decoration: none; box-shadow: 0 4px 15px rgba(215, 0, 24, 0.4); display: flex; align-items: center; gap: 8px; z-index: 900; }
         
+        .floating-zalo-btn { position: fixed; bottom: 78px; right: 20px; width: 48px; height: 48px; background: #0068ff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0, 104, 255, 0.45); cursor: pointer; z-index: 950; transition: transform 0.2s; border: 2px solid white; font-weight: 900; font-size: 14px; }
+        .floating-zalo-btn:hover { transform: scale(1.08); }
+        
+        .zalo-popup { display: none; position: fixed; bottom: 135px; right: 20px; width: 320px; max-width: calc(100vw - 40px); background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22); overflow: hidden; z-index: 1000; animation: slideUpZalo 0.25s ease-out; }
+        @keyframes slideUpZalo { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .zalo-popup.show { display: block; }
+        .zalo-popup-header { background: linear-gradient(135deg, #0068ff, #0052cc); color: white; padding: 16px 18px 20px 18px; position: relative; }
+        .zalo-header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .zalo-shop-info { display: flex; align-items: center; gap: 10px; }
+        .zalo-avatar { width: 38px; height: 38px; background: white; color: #004aad; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 12px; position: relative; }
+        .zalo-online-dot { width: 10px; height: 10px; background: #28a745; border: 2px solid white; border-radius: 50%; position: absolute; bottom: 0; right: 0; }
+        .zalo-close-btn { background: rgba(255, 255, 255, 0.2); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .zalo-popup-body { padding: 20px 18px; text-align: center; background: white; }
+        .zalo-btn-primary { display: block; width: 100%; background: #0068ff; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; margin-bottom: 10px; transition: 0.2s; text-align: center; }
+        .zalo-btn-primary:hover { background: #0052cc; }
+        .zalo-btn-secondary { display: block; width: 100%; background: #f0f2f5; color: #333; text-decoration: none; padding: 11px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: 0.2s; text-align: center; }
+        .zalo-btn-secondary:hover { background: #e4e6e9; }
+
         .modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65); justify-content: center; align-items: center; z-index: 999; padding: 15px; overflow-y: auto; }
         .modal-box, .detail-box { background: white; padding: 25px; border-radius: 12px; width: 100%; max-width: 760px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); max-height: 90vh; overflow-y: auto; position: relative; scroll-behavior: smooth; }
         
@@ -173,9 +193,43 @@
         </div>
     </div>
 
+    <!-- CÁC NÚT NỔI GÓC PHẢI (HOTLINE & ZALO) -->
     <a href="tel:0376857099" class="floating-hotline">
         <i class="fa-solid fa-phone"></i> Hotline: 0376.857.099
     </a>
+
+    <div class="floating-zalo-btn" onclick="toggleZaloPopup()" title="Chat Zalo với cửa hàng">
+        Zalo
+    </div>
+
+    <!-- HỘP THOẠI POPUP CHAT ZALO (GIỐNG MẪU ĐIỆN MÁY XANH) -->
+    <div class="zalo-popup" id="zaloPopup">
+        <div class="zalo-popup-header">
+            <div class="zalo-header-top">
+                <div class="zalo-shop-info">
+                    <div class="zalo-avatar">
+                        AN
+                        <span class="zalo-online-dot"></span>
+                    </div>
+                    <div style="font-weight: 700; font-size: 15px;">Bếp Từ Ánh Nhung</div>
+                </div>
+                <button class="zalo-close-btn" onclick="toggleZaloPopup()">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+            <div style="font-size: 20px; font-weight: 800; margin-bottom: 4px;">Xin chào!</div>
+            <div style="font-size: 13px; opacity: 0.9;">Rất vui khi được hỗ trợ bạn</div>
+        </div>
+        <div class="zalo-popup-body">
+            <div style="font-size: 13px; color: #777; margin-bottom: 15px;">Bắt đầu trò chuyện với Tổng Kho Ánh Nhung</div>
+            <a href="https://zalo.me/0376857099" target="_blank" class="zalo-btn-primary">
+                Chat bằng Zalo
+            </a>
+            <a href="tel:0376857099" class="zalo-btn-secondary">
+                Chat nhanh (Gọi 0376.857.099)
+            </a>
+        </div>
+    </div>
 
     <!-- Modal Chi Tiết Sản Phẩm -->
     <div class="modal" id="detailModal">
@@ -218,8 +272,8 @@
                     <button class="btn-buy" style="padding: 12px 18px; font-size: 14px; width: auto;" onclick="addToCartFromDetail()">
                         <i class="fa-solid fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG
                     </button>
-                    <a href="tel:0376857099" style="background: #d70018; color: white; padding: 12px 18px; border-radius: 5px; font-weight: bold; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                        <i class="fa-solid fa-phone"></i> GỌI: 0376.857.099
+                    <a href="https://zalo.me/0376857099" target="_blank" style="background: #0068ff; color: white; padding: 12px 18px; border-radius: 5px; font-weight: bold; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-comment-dots"></i> CHAT ZALO
                     </a>
                 </div>
             </div>
@@ -291,7 +345,7 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzNrn313TPnkke4INE4XWrPKBWdCNROKdfAkACQ_xqbKlu29ZkGiEdG9MOEucNyQORkHg/exec';
+        const scriptURL = 'DÁN_ĐƯỜNG_DẪN_WEB_APP_URL_VÀO_ĐÂY';
 
         let products = [
             { id: 1, name: "LÕI 1", brand: "AQUA", category: "loc-nuoc", marketPrice: 10000, price: 33334, discountPrice: 0, images: ["images/loi1.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 1." },
@@ -378,6 +432,11 @@
                     renderProducts();
                 })
                 .catch(() => renderProducts());
+        }
+
+        // ĐIỀU KHIỂN POPUP ZALO
+        function toggleZaloPopup() {
+            document.getElementById('zaloPopup').classList.toggle('show');
         }
 
         function showCustomAlert(message) {
