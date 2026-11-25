@@ -67,6 +67,74 @@
         .btn-buy { flex: 1; background: linear-gradient(90deg, #ff6600, #ff8800); color: white; border: none; padding: 6px 2px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; }
         @media (min-width: 768px) { .btn-detail, .btn-buy { padding: 8px; font-size: 13px; } }
 
+        /* MÔ TẢ GỌN GÀNG TRÊN CHI TIẾT SẢN PHẨM */
+        .product-desc-compact {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #444;
+            white-space: pre-line;
+            background: #f8fafd;
+            border-left: 3px solid #004aad;
+            padding: 8px 10px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+        .product-desc-compact.clamped {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .btn-toggle-desc {
+            background: none;
+            border: none;
+            color: #004aad;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 4px;
+            padding: 0;
+        }
+
+        /* NÚT XEM VIDEO THEO YÊU CẦU */
+        .product-video-trigger-wrap {
+            margin-top: 12px;
+        }
+        .btn-watch-video {
+            background: #004aad;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 9px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-watch-video:hover {
+            background: #00337a;
+        }
+        .product-video-player-box {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8fafd;
+            border: 1px solid #dce6f5;
+            border-radius: 8px;
+        }
+        .product-video-player-box video,
+        .product-video-player-box iframe {
+            width: 100%;
+            max-height: 240px;
+            border-radius: 6px;
+            border: none;
+            background: #000;
+        }
+        .product-video-player-box iframe {
+            height: 230px;
+        }
+
         /* NÚT HOTLINE & WIDGET ZALO PHÍA DƯỚI GÓC PHẢI */
         .floating-hotline { position: fixed; bottom: 20px; right: 20px; background: #d70018; color: white; padding: 10px 16px; border-radius: 50px; font-weight: bold; font-size: 14px; text-decoration: none; box-shadow: 0 4px 15px rgba(215, 0, 24, 0.4); display: flex; align-items: center; gap: 8px; z-index: 900; }
 
@@ -131,7 +199,7 @@
         .specs-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
         .specs-table tr { border-bottom: 1px solid #e0e0e0; }
         .specs-table th { background: #f8f9fa; color: #004aad; text-align: left; padding: 12px; width: 32%; vertical-align: top; font-weight: 700; text-transform: uppercase; font-size: 13px; border-right: 1px solid #e0e0e0; }
-        .specs-table td { padding: 12px; color: #333; line-height: 1.6; }
+        .specs-table td { padding: 12px; color: #333; line-height: 1.6; white-space: pre-line; }
         .detail-footer { margin-top: 20px; display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; }
@@ -148,6 +216,179 @@
         .modal-actions button { flex: 1; padding: 11px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 14px; }
         .btn-confirm { background: #28a745; color: white; }
         .btn-close { background: #6c757d; color: white; }
+
+        /* BOTTOM SHEET PHƯƠNG THỨC THANH TOÁN */
+        .pay-selector-card {
+            background: #f8fafd;
+            border: 1px solid #dce6f5;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .pay-selector-card:hover {
+            border-color: #004aad;
+            background: #f0f6ff;
+        }
+        .prepay-summary-card {
+            display: none;
+            background: #fff;
+            border: 1px dashed #004aad;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            font-size: 12.5px;
+            line-height: 1.55;
+            color: #1e293b;
+        }
+        .pay-sheet-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.58);
+            z-index: 1600;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .pay-sheet-backdrop.show {
+            display: flex;
+        }
+        .pay-sheet-box {
+            background: #fff;
+            width: 100%;
+            max-width: 540px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.22);
+            animation: paySheetUp 0.22s ease-out;
+        }
+        @keyframes paySheetUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .pay-sheet-header {
+            padding: 14px 18px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+            position: relative;
+        }
+        .pay-sheet-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+        }
+        .pay-sheet-sub {
+            font-size: 12px;
+            color: #198754;
+            margin-top: 3px;
+        }
+        .pay-sheet-close {
+            position: absolute;
+            right: 16px;
+            top: 12px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .pay-sheet-body {
+            padding: 8px 16px 16px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .pay-method-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 13px 6px;
+            border-bottom: 1px solid #f2f2f2;
+            cursor: pointer;
+        }
+        .pay-method-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            flex: 1;
+        }
+        .pay-badge-cod {
+            background: #16a34a;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        .pay-badge-momo {
+            background: #ae2070;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 2px;
+        }
+        .pay-radio {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .pay-method-row.selected .pay-radio {
+            border-color: #d70018;
+        }
+        .pay-method-row.selected .pay-radio::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d70018;
+        }
+        .pay-extra-box {
+            display: none;
+            background: #f8fafd;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 6px 0 10px;
+            font-size: 12.5px;
+            line-height: 1.55;
+            color: #334155;
+        }
+        .pay-sheet-footer {
+            padding: 12px 16px;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
+        .btn-pay-confirm {
+            width: 100%;
+            background: #d70018;
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-pay-confirm:hover {
+            background: #b80014;
+        }
 
         /* MODAL LỊCH SỬ ĐƠN HÀNG, HUỶ ĐƠN & ĐÁNH GIÁ */
         .oh-tabs { display: flex; overflow-x: auto; border-bottom: 1px solid #eee; background: #f8f9fa; margin: 10px 0 12px; border-radius: 6px; }
@@ -167,9 +408,12 @@
         .oh-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; flex-wrap: wrap; }
         .btn-oh-cancel { padding: 6px 12px; border: 1px solid #dc3545; background: #fff; color: #dc3545; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; }
         .btn-oh-primary { padding: 6px 12px; border: none; background: #004aad; color: #fff; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; }
-        .star-picker { display: flex; gap: 8px; font-size: 26px; margin: 10px 0; cursor: pointer; }
-        .star-picker span { color: #ccc; }
-        .star-picker span.active { color: #ffb400; }
+        .oh-card-stars { display: flex; align-items: center; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+        .oh-star-btn { background: none; border: none; font-size: 22px; color: #ccc; cursor: pointer; line-height: 1; padding: 0 2px; transition: transform 0.12s; }
+        .oh-star-btn.active { color: #ffb400; }
+        .oh-star-btn:hover { transform: scale(1.12); }
+        .oh-comment-row { display: flex; gap: 8px; margin-top: 8px; align-items: center; flex-wrap: wrap; }
+        .oh-comment-input { flex: 1; min-width: 180px; padding: 7px 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -334,7 +578,17 @@
                     <div>
                         <div class="product-brand" id="dtBrand"></div>
                         <div class="detail-title" id="dtName"></div>
-                        <p style="font-size: 13px; color: #666; margin-bottom: 6px;" id="dtDesc"></p>
+                        <div id="dtDesc" class="product-desc-compact clamped"></div>
+                        <button type="button" id="btnToggleDesc" class="btn-toggle-desc" style="display:none;" onclick="toggleDetailDesc()">Xem thêm mô tả</button>
+
+                        <!-- NÚT BẤM MỞ VIDEO THEO YÊU CẦU -->
+                        <div id="productVideoSection" class="product-video-trigger-wrap" style="display: none;">
+                            <button type="button" id="btnToggleProductVideo" class="btn-watch-video" onclick="toggleProductVideo()">
+                                <i class="fa-solid fa-play-circle"></i>
+                                <span id="labelToggleProductVideo">Xem video sản phẩm</span>
+                            </button>
+                            <div id="productVideoPlayerBox" class="product-video-player-box" style="display: none;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -402,13 +656,101 @@
             <form id="orderForm" onsubmit="submitToGoogleSheet(event)">
                 <h4 style="color: #004aad; margin: 15px 0 8px; font-size: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">Thông tin nhận hàng</h4>
                 <div class="form-group"><input type="text" id="cusName" name="name" placeholder="Họ và tên khách hàng *" required></div>
-                <div class="form-group"><input type="tel" id="cusPhone" name="phone" placeholder="Số điện thoại liên hệ *" required></div>
+                <div class="form-group"><input type="tel" id="cusPhone" name="phone" placeholder="Số điện thoại liên hệ *" oninput="refreshActivePrepayPreview()" required></div>
                 <div class="form-group"><textarea id="cusAddress" name="address" rows="2" placeholder="Địa chỉ giao hàng chi tiết *" required></textarea></div>
+
+                <!-- CHỌN PHƯƠNG THỨC THANH TOÁN (BOTTOM SHEET) -->
+                <div class="pay-selector-card" onclick="openPaymentSheet()">
+                    <div>
+                        <div style="font-size: 12px; color: #666;">Phương thức thanh toán</div>
+                        <div id="selectedPaymentLabel" style="font-size: 14px; font-weight: 700; color: #004aad; margin-top: 2px;">COD - Thanh toán khi giao</div>
+                    </div>
+                    <span style="font-size: 13px; font-weight: 600; color: #d70018;">Thay đổi <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+                <input type="hidden" id="selectedPaymentCode" value="COD">
+
+                <!-- THÔNG TIN CHUYỂN KHOẢN TRƯỚC / MÃ QR (TỰ HIỆN KHI CHỌN THANH TOÁN TRƯỚC) -->
+                <div id="prepaySummaryCard" class="prepay-summary-card">
+                    <div id="prepayAccountDetails"></div>
+                    <div style="text-align: center; margin-top: 8px;">
+                        <img id="prepayVietQrImg" src="" alt="Mã QR thanh toán" style="max-width: 190px; width: 100%; border-radius: 6px; border: 1px solid #e2e8f0; display: none;">
+                        <div id="prepayQrHint" style="font-size: 11.5px; color: #64748b; margin-top: 4px;"></div>
+                    </div>
+                    <label style="display: flex; align-items: flex-start; gap: 7px; margin-top: 8px; font-size: 12.5px; color: #004aad; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" id="prepayConfirmedCheck" style="margin-top: 3px;">
+                        <span>Tôi đã chuyển khoản thanh toán trước (hoặc sẽ thanh toán ngay sau khi bấm đặt) và chờ kho xác nhận.</span>
+                    </label>
+                </div>
+
                 <div class="modal-actions" style="margin-top: 15px;">
                     <button type="button" class="btn-close" onclick="closeCartModal()">Đóng / Mua tiếp</button>
                     <button type="submit" class="btn-confirm" id="submitBtn">Xác Nhận Đặt Hàng</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- BOTTOM SHEET CHỌN PHƯƠNG THỨC THANH TOÁN -->
+    <div class="pay-sheet-backdrop" id="paymentSheetModal" onclick="closePaymentSheet()">
+        <div class="pay-sheet-box" onclick="event.stopPropagation()">
+            <div class="pay-sheet-header">
+                <div class="pay-sheet-title">Phương thức thanh toán</div>
+                <div class="pay-sheet-sub"><i class="fa-solid fa-shield-halved"></i> Thông tin thanh toán được ghi nhận bảo mật &amp; rõ ràng</div>
+                <button type="button" class="pay-sheet-close" onclick="closePaymentSheet()">&times;</button>
+            </div>
+
+            <div class="pay-sheet-body">
+                <div class="pay-method-row selected" data-code="COD" data-label="COD - Thanh toán khi giao" onclick="selectPaymentRow(this)">
+                    <div class="pay-method-left">
+                        <span class="pay-badge-cod">COD</span>
+                        <div>
+                            <div style="font-weight: 700; font-size: 14px;">Thanh toán khi giao</div>
+                            <div style="font-size: 12px; color: #666;">Kiểm tra hàng và thanh toán tiền mặt khi nhận hàng</div>
+                        </div>
+                    </div>
+                    <div class="pay-radio"></div>
+                </div>
+
+                <div class="pay-method-row" data-code="PREPAY_BANK" data-label="Thanh toán trước - Ngân hàng di động / QR" onclick="selectPaymentRow(this)">
+                    <div class="pay-method-left">
+                        <i class="fa-solid fa-building-columns" style="color: #004aad; font-size: 18px; margin-top: 2px;"></i>
+                        <div>
+                            <div style="font-weight: 700; font-size: 14px;">Ngân hàng di động / Chuyển khoản trước (QR)</div>
+                            <div style="font-size: 12px; color: #666;">Quét mã QR hoặc chuyển khoản ngân hàng trước khi giao hàng</div>
+                        </div>
+                    </div>
+                    <div class="pay-radio"></div>
+                </div>
+                <div class="pay-extra-box" id="extra_PREPAY_BANK"></div>
+
+                <div class="pay-method-row" data-code="PREPAY_MOMO" data-label="Thanh toán trước - Ví MoMo" onclick="selectPaymentRow(this)">
+                    <div class="pay-method-left">
+                        <span class="pay-badge-momo">MoMo</span>
+                        <div>
+                            <div style="font-weight: 700; font-size: 14px;">Ví điện tử MoMo (Thanh toán trước)</div>
+                            <div style="font-size: 12px; color: #666;">Chuyển khoản qua MoMo hoặc quét mã QR nhận tiền</div>
+                        </div>
+                    </div>
+                    <div class="pay-radio"></div>
+                </div>
+                <div class="pay-extra-box" id="extra_PREPAY_MOMO"></div>
+
+                <div class="pay-method-row" data-code="OTHER_BANK" data-label="Thanh toán trước - Tài khoản ngân hàng khác" onclick="selectPaymentRow(this)">
+                    <div class="pay-method-left">
+                        <i class="fa-regular fa-credit-card" style="color: #004aad; font-size: 18px; margin-top: 2px;"></i>
+                        <div>
+                            <div style="font-weight: 700; font-size: 14px;">Tài khoản ngân hàng khác / Thẻ nội địa</div>
+                            <div style="font-size: 12px; color: #666;">Chuyển khoản liên ngân hàng 24/7 theo thông tin tài khoản kho</div>
+                        </div>
+                    </div>
+                    <div class="pay-radio"></div>
+                </div>
+                <div class="pay-extra-box" id="extra_OTHER_BANK"></div>
+            </div>
+
+            <div class="pay-sheet-footer">
+                <button type="button" class="btn-pay-confirm" onclick="confirmPaymentSelection()">Xác nhận phương thức</button>
+            </div>
         </div>
     </div>
 
@@ -428,8 +770,8 @@
             </div>
 
             <div class="oh-phone-bar">
-                <input type="tel" id="lookupOrderPhone" placeholder="Nhập SĐT đặt hàng để tra cứu đơn trên hệ thống...">
-                <button type="button" onclick="syncCustomerOrders(true)">Tra cứu</button>
+                <input type="tel" id="lookupOrderPhone" autocomplete="off" placeholder="Nhập SĐT đặt hàng để tra cứu đơn trên hệ thống..." onkeydown="if(event.key==='Enter'){ event.preventDefault(); syncCustomerOrders(true); }">
+                <button type="button" id="btnLookupOrder" onclick="syncCustomerOrders(true)">Tra cứu</button>
             </div>
 
             <div id="orderHistoryList" style="max-height: 52vh; overflow-y: auto;"></div>
@@ -459,28 +801,7 @@
         </div>
     </div>
 
-    <!-- Modal Đánh Giá Sao & Bình Luận -->
-    <div class="modal" id="reviewOrderModal" style="z-index: 1200;">
-        <div class="modal-box" style="max-width: 440px;">
-            <span class="close-x" onclick="closeReviewOrderModal()">&times;</span>
-            <h3 style="color: #004aad; margin-bottom: 8px;">Đánh Giá Sản Phẩm</h3>
-            <div id="reviewOrderProductName" style="font-weight: 600; font-size: 14px; color: #222;"></div>
-            <div class="star-picker" id="starPicker">
-                <span data-star="1" class="active" onclick="setReviewStars(1)">★</span>
-                <span data-star="2" class="active" onclick="setReviewStars(2)">★</span>
-                <span data-star="3" class="active" onclick="setReviewStars(3)">★</span>
-                <span data-star="4" class="active" onclick="setReviewStars(4)">★</span>
-                <span data-star="5" class="active" onclick="setReviewStars(5)">★</span>
-            </div>
-            <textarea id="reviewCommentInput" rows="3" placeholder="Chia sẻ cảm nhận / bình luận của bạn về sản phẩm..." style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 13.5px;"></textarea>
-            <div class="modal-actions">
-                <button type="button" class="btn-close" onclick="closeReviewOrderModal()">Đóng</button>
-                <button type="button" class="btn-confirm" onclick="submitOrderReview()">Gửi Đánh Giá</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Thông Báo Tự Tắt Sau 3 Giây -->
+    <!-- Modal Thông Báo Tự Tắt Sau 2 Giây -->
     <div class="modal" id="customAlertModal" style="z-index: 2500;">
         <div class="modal-box alert-box">
             <i class="fa-solid fa-circle-check"></i>
@@ -490,11 +811,22 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzSraLzSQg3xCz1piYxAVyuGiv8EbzPqDYLkWXvx76m-6-Hu4j6WWFY5MAQZ4OHytTo0A/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz6KFdA1HU-7LmD78b8UN7JBWY9lfqqSdm_xx-JWsf6A9qM7QcuJbstPUDmlSEms2mP8g/exec';
 
-        // Danh sách đầy đủ 43 sản phẩm mặc định (luôn giữ lại trừ khi bị nhập ID vào ô Ẩn / Xoá trên Sheet)
+        // ============================================================
+        // CẤU HÌNH TÀI KHOẢN NHẬN THANH TOÁN TRƯỚC (TỰ ĐIỀN THÔNG TIN CỦA BẠN)
+        // ============================================================
+        const PAYMENT_CONFIG = {
+            bankId: 'VCB',                     // Mã ngân hàng VietQR (VD: VCB, MB, TCB, ACB, BIDV, ICB...)
+            accountNumber: '0000000000',       // Số tài khoản ngân hàng của bạn
+            accountHolder: 'TONG KHO BEP TU ANH NHUNG',
+            momoPhone: '0376857099',           // SĐT / tài khoản MoMo của bạn
+            momoHolder: 'TONG KHO BEP TU ANH NHUNG',
+            otherBankInfo: 'Ngân hàng phụ: [Tên ngân hàng] - STK: [Số tài khoản] - Chủ TK: TONG KHO BEP TU ANH NHUNG'
+        };
+
         let defaultProducts = [
-            { id: 1, name: "LÕI 1", brand: "AQUA", category: "loc-nuoc", marketPrice: 10000, price: 33334, discountPrice: 0, images: ["images/loi1.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 1." },
+            { id: 1, name: "LÕI 1", brand: "AQUA", category: "loc-nuoc", marketPrice: 10000, price: 2000, discountPrice: 0, images: ["images/loi1.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 1." },
             { id: 2, name: "LÕI 2", brand: "AQUA", category: "loc-nuoc", marketPrice: 13000, price: 33334, discountPrice: 0, images: ["images/loi2.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 2." },
             { id: 3, name: "LÕI 3", brand: "AQUA", category: "loc-nuoc", marketPrice: 10000, price: 33334, discountPrice: 0, images: ["images/loi3.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 3." },
             { id: 4, name: "MÁY LỌC NÓNG NGUỘI", brand: "AQUA", category: "loc-nuoc", marketPrice: 2950000, price: 5500000, discountPrice: 0, images: ["images/maylocnuoc.jpg"], desc: "Máy lọc nước nóng nguội Aqua cao cấp." },
@@ -570,6 +902,59 @@
         let lastProductsSignature = '';
         let isSyncingProducts = false;
 
+        // Trạng thái video theo yêu cầu (mặc định không nạp video khi chưa nhấn)
+        let activeDetailVideos = [];
+        let isProductVideoOpen = false;
+
+        function isVideoMediaLink(url) {
+            const s = String(url || '').trim().toLowerCase();
+            if (!s) return false;
+            return /\.(mp4|webm|ogg|mov|m4v|m3u8|avi|mkv)(\?|#|$)/i.test(s)
+                || s.includes('youtube.com/')
+                || s.includes('youtu.be/')
+                || s.includes('drive.google.com/')
+                || s.includes('vimeo.com/')
+                || s.includes('tiktok.com/')
+                || s.includes('facebook.com/')
+                || s.includes('/video')
+                || s.includes('video=')
+                || s.includes('watch?v=');
+        }
+
+        function splitMediaList(rawVal) {
+            const list = Array.isArray(rawVal) ? rawVal : String(rawVal || '').split(/[\n\r,;|]+/);
+            const images = [];
+            const videos = [];
+            list.forEach(item => {
+                const u = String(item || '').trim();
+                if (!u) return;
+                if (isVideoMediaLink(u)) videos.push(u);
+                else images.push(u);
+            });
+            return {
+                images: Array.from(new Set(images)),
+                videos: Array.from(new Set(videos))
+            };
+        }
+
+        function formatCompactDesc(rawVal) {
+            const raw = String(rawVal || '').trim();
+            if (!raw) return '';
+            const lines = raw
+                .split(/\r?\n/)
+                .map(line => line.replace(/\s+/g, ' ').trim())
+                .filter(Boolean);
+            return lines.map(line =>
+                line
+                    .replace(/^Đặc\s*Tính\s*:\s*/i, '')
+                    .replace(/^Công\s*nghệ\s*/i, '')
+                    .replace(/sử dụng kính\s*/i, 'Kính ')
+                    .replace(/với thiết kế\s*/i, '')
+                    .replace(/giúp tối ưu\s*/i, 'giảm ')
+                    .replace(/giúp tiết kiệm\s*/i, 'tiết kiệm ')
+            ).join('\n');
+        }
+
         function parseIdSortKey(idVal) {
             const raw = String(idVal ?? '').trim();
             const numMatch = raw.match(/(\d+)/);
@@ -585,12 +970,6 @@
             const stripped = s.replace(/^id[\s_-]*/i, '');
             const numMatch = stripped.match(/^0*(\d+)$/);
             return numMatch ? numMatch[1] : stripped;
-        }
-
-        function parseImagesArray(val) {
-            if (!val) return [];
-            const list = Array.isArray(val) ? val : String(val).split(/[\n\r,;|]+/);
-            return Array.from(new Set(list.map(x => String(x || '').trim()).filter(Boolean)));
         }
 
         function normalizeCategoryKey(catVal) {
@@ -634,7 +1013,6 @@
             return keys;
         }
 
-        // 1. ĐỒNG BỘ SẢN PHẨM TỪ TAB "Products" TRÊN GOOGLE SHEETS
         function loadProductsFromSheet(isSilent = false) {
             if (!isSilent) {
                 products = [...defaultProducts];
@@ -673,7 +1051,8 @@
                     defaultProducts.forEach(item => {
                         const k = normalizeIdKey(item.id);
                         if (!blockedKeys.has(k)) {
-                            mapById.set(k, { ...item });
+                            const splitDef = splitMediaList(item.images);
+                            mapById.set(k, { ...item, images: splitDef.images, videos: splitDef.videos });
                         }
                     });
 
@@ -700,10 +1079,20 @@
                         }
 
                         const prev = mapById.get(k) || {};
-                        const sheetImgs = parseImagesArray(item.images);
-                        const mergedImages = sheetImgs.length > 0
-                            ? Array.from(new Set([...sheetImgs, ...(prev.images || [])]))
-                            : (prev.images || []);
+                        const prevSplit = splitMediaList([...(prev.images || []), ...(prev.videos || [])]);
+                        const sheetSplit = splitMediaList([
+                            ...(Array.isArray(item.images) ? item.images : (item.images ? [item.images] : [])),
+                            ...(Array.isArray(item.videos) ? item.videos : []),
+                            ...(item.video ? [item.video] : [])
+                        ]);
+
+                        const mergedImages = sheetSplit.images.length > 0
+                            ? Array.from(new Set([...sheetSplit.images, ...prevSplit.images]))
+                            : prevSplit.images;
+
+                        const mergedVideos = sheetSplit.videos.length > 0
+                            ? Array.from(new Set([...sheetSplit.videos, ...prevSplit.videos]))
+                            : prevSplit.videos;
 
                         const sheetMarket = Number(item.marketPrice);
                         const sheetPrice = Number(item.price);
@@ -721,7 +1110,8 @@
                             price: (item.price !== undefined && String(item.price).trim() !== '' && !isNaN(sheetPrice) && sheetPrice > 0) ? sheetPrice : (Number(prev.price) || 0),
                             discountPrice: (item.discountPrice !== undefined && String(item.discountPrice).trim() !== '' && !isNaN(sheetDiscount)) ? sheetDiscount : (Number(prev.discountPrice) || 0),
                             images: mergedImages,
-                            desc: (item.desc !== undefined && String(item.desc).trim() !== '') ? String(item.desc).trim() : (prev.desc || '')
+                            videos: mergedVideos,
+                            desc: (item.desc !== undefined && String(item.desc).trim() !== '') ? formatCompactDesc(item.desc) : (prev.desc || '')
                         });
                     });
 
@@ -753,7 +1143,6 @@
                 });
         }
 
-        // Thêm danh mục mới vào giữa "Tất cả sản phẩm" và "Thiết Bị Khác", đồng thời xóa danh mục khi không còn sản phẩm
         function syncMenuCategories() {
             const menuEl = document.getElementById('categoryList');
             if (!menuEl) return;
@@ -835,7 +1224,6 @@
             document.getElementById('zaloPopup').classList.toggle('show');
         }
 
-        // Thông báo tự tắt sau 3 giây (không cần bấm OK)
         let alertAutoHideTimer = null;
         function showCustomAlert(message) {
             document.getElementById('customAlertText').innerText = message;
@@ -885,9 +1273,10 @@
             grid.innerHTML = filtered.map(p => {
                 const finalPrice = getFinalPrice(p);
                 const hasDiscount = p.discountPrice && p.discountPrice > 0;
-                const displayImg = (p.images && p.images.length > 0) ? p.images[0] : '';
+                const cleanImgs = splitMediaList(p.images).images;
+                const displayImg = cleanImgs.length > 0 ? cleanImgs[0] : '';
                 const safeId = typeof p.id === 'string' ? `'${p.id.replace(/'/g, "\\'")}'` : p.id;
-                const imgsAttr = encodeURIComponent(JSON.stringify(p.images || []));
+                const imgsAttr = encodeURIComponent(JSON.stringify(cleanImgs));
 
                 return `
                     <div class="product-card" data-product-id="${p.id}">
@@ -937,6 +1326,103 @@
 
         function applyFilters() { renderProducts(); }
 
+        function toggleDetailDesc() {
+            const descEl = document.getElementById('dtDesc');
+            const toggleBtn = document.getElementById('btnToggleDesc');
+            if (!descEl || !toggleBtn) return;
+            const isClamped = descEl.classList.toggle('clamped');
+            toggleBtn.innerText = isClamped ? 'Xem thêm mô tả' : 'Thu gọn';
+        }
+
+        // ============================================================
+        // XỬ LÝ XEM VIDEO KHI KHÁCH NHẤN NÚT (CHUNG CỘT IMAGES VỚI ẢNH)
+        // ============================================================
+        function buildSingleVideoNodeHtml(rawUrl) {
+            const url = String(rawUrl || '').trim();
+            if (!url) return '';
+
+            const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+            if (ytMatch && ytMatch[1]) {
+                return `<iframe src="https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+
+            const driveFileMatch = url.match(/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)/);
+            if (driveFileMatch && driveFileMatch[1]) {
+                return `<iframe src="https://drive.google.com/file/d/${driveFileMatch[1]}/preview" allow="autoplay" allowfullscreen></iframe>`;
+            }
+
+            const safeUrl = url.replace(/"/g, '&quot;');
+            return `
+                <video src="${safeUrl}" controls autoplay playsinline preload="metadata"
+                    onerror="this.style.display='none'; var fb=this.nextElementSibling; if(fb) fb.style.display='block';"></video>
+                <div style="display:none; padding:10px; background:#fff3cd; color:#664d03; border-radius:6px; font-size:12.5px;">
+                    Trình duyệt không phát trực tiếp được link này.
+                    <a href="${safeUrl}" target="_blank" rel="noopener" style="color:#004aad; font-weight:700; text-decoration:underline;">Bấm vào đây để mở video</a>
+                </div>
+            `;
+        }
+
+        function setupVideoButtonForProduct(p) {
+            const sectionEl = document.getElementById('productVideoSection');
+            const playerBox = document.getElementById('productVideoPlayerBox');
+            const labelEl = document.getElementById('labelToggleProductVideo');
+            if (!sectionEl || !playerBox || !p) return;
+
+            const splitAll = splitMediaList([
+                ...(Array.isArray(p.videos) ? p.videos : []),
+                ...(p.video ? [p.video] : []),
+                ...(Array.isArray(p.images) ? p.images : [])
+            ]);
+            activeDetailVideos = splitAll.videos;
+
+            isProductVideoOpen = false;
+            playerBox.innerHTML = '';
+            playerBox.style.display = 'none';
+
+            if (activeDetailVideos.length > 0) {
+                sectionEl.style.display = 'block';
+                if (labelEl) {
+                    labelEl.innerText = activeDetailVideos.length > 1
+                        ? `Xem video sản phẩm (${activeDetailVideos.length} video)`
+                        : 'Xem video sản phẩm';
+                }
+            } else {
+                sectionEl.style.display = 'none';
+            }
+        }
+
+        function toggleProductVideo() {
+            const playerBox = document.getElementById('productVideoPlayerBox');
+            const labelEl = document.getElementById('labelToggleProductVideo');
+            if (!playerBox || activeDetailVideos.length === 0) return;
+
+            if (!isProductVideoOpen) {
+                isProductVideoOpen = true;
+                playerBox.innerHTML = activeDetailVideos
+                    .map(buildSingleVideoNodeHtml)
+                    .join('<div style="height:8px;"></div>');
+                playerBox.style.display = 'block';
+                if (labelEl) labelEl.innerText = 'Ẩn video';
+            } else {
+                resetProductVideoPlayer();
+            }
+        }
+
+        function resetProductVideoPlayer() {
+            const playerBox = document.getElementById('productVideoPlayerBox');
+            const labelEl = document.getElementById('labelToggleProductVideo');
+            isProductVideoOpen = false;
+            if (playerBox) {
+                playerBox.innerHTML = '';
+                playerBox.style.display = 'none';
+            }
+            if (labelEl && activeDetailVideos.length > 0) {
+                labelEl.innerText = activeDetailVideos.length > 1
+                    ? `Xem video sản phẩm (${activeDetailVideos.length} video)`
+                    : 'Xem video sản phẩm';
+            }
+        }
+
         function openDetailModal(id) {
             const p = products.find(item => normalizeIdKey(item.id) === normalizeIdKey(id));
             if (!p) return;
@@ -945,7 +1431,23 @@
 
             document.getElementById('dtBrand').innerText = p.brand || '';
             document.getElementById('dtName').innerText = p.name || '';
-            document.getElementById('dtDesc').innerText = p.desc || '';
+
+            const compactDesc = formatCompactDesc(p.desc || '');
+            const descEl = document.getElementById('dtDesc');
+            const toggleBtn = document.getElementById('btnToggleDesc');
+            descEl.innerText = compactDesc || 'Đang cập nhật mô tả sản phẩm...';
+            descEl.classList.add('clamped');
+
+            const lineCount = compactDesc.split('\n').length;
+            if (toggleBtn) {
+                if (lineCount > 3 || compactDesc.length > 160) {
+                    toggleBtn.style.display = 'inline-block';
+                    toggleBtn.innerText = 'Xem thêm mô tả';
+                } else {
+                    toggleBtn.style.display = 'none';
+                }
+            }
+
             document.getElementById('dtMarketPrice').innerText = 'Giá kho: ' + Number(p.marketPrice || 0).toLocaleString() + ' đ';
 
             const finalPrice = (p.discountPrice && p.discountPrice > 0) ? p.discountPrice : p.price;
@@ -969,15 +1471,19 @@
                     <tr><th>Xuất xứ &amp; Bảo hành</th><td>${p.specs.xuatXu}</td></tr>
                 `;
             } else {
-                specsTable.innerHTML = `<tr><th>Mô tả chi tiết</th><td>${p.desc || 'Đang cập nhật'}</td></tr>`;
+                specsTable.innerHTML = `<tr><th>Mô tả chi tiết</th><td>${compactDesc || 'Đang cập nhật'}</td></tr>`;
             }
 
+            setupVideoButtonForProduct(p);
             updateSliderView();
             document.getElementById('detailModal').style.display = 'flex';
             document.getElementById('detailBoxModal').scrollTop = 0;
         }
 
-        function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; }
+        function closeDetailModal() {
+            resetProductVideoPlayer();
+            document.getElementById('detailModal').style.display = 'none';
+        }
 
         function scrollToSection(sectionId, element) {
             const targetElement = document.getElementById(sectionId);
@@ -1001,11 +1507,17 @@
             navItems.forEach((item, idx) => item.classList.toggle('active', idx === currentIdx));
         }
 
+        function getCleanProductImages() {
+            if (!viewingProduct) return [];
+            return splitMediaList(viewingProduct.images).images;
+        }
+
         function moveSlide(direction) {
-            if (!viewingProduct || !viewingProduct.images) return;
+            const imgs = getCleanProductImages();
+            if (imgs.length === 0) return;
             currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = viewingProduct.images.length - 1;
-            else if (currentImageIndex >= viewingProduct.images.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = imgs.length - 1;
+            else if (currentImageIndex >= imgs.length) currentImageIndex = 0;
             updateSliderView();
         }
 
@@ -1015,8 +1527,13 @@
         }
 
         function updateSliderView() {
-            if (!viewingProduct || !viewingProduct.images) return;
-            const imgs = viewingProduct.images;
+            const imgs = getCleanProductImages();
+            if (imgs.length === 0) {
+                document.getElementById('mainSliderImg').src = '';
+                document.getElementById('sliderCounter').innerText = '0/0';
+                document.getElementById('thumbnailStrip').innerHTML = '';
+                return;
+            }
             document.getElementById('mainSliderImg').src = imgs[currentImageIndex] || '';
             document.getElementById('sliderCounter').innerText = `${currentImageIndex + 1}/${imgs.length}`;
 
@@ -1027,7 +1544,8 @@
         }
 
         function openLightbox() {
-            if (!viewingProduct || !viewingProduct.images) return;
+            const imgs = getCleanProductImages();
+            if (imgs.length === 0) return;
             updateLightboxView();
             document.getElementById('lightboxModal').style.display = 'flex';
         }
@@ -1035,10 +1553,11 @@
         function closeLightbox() { document.getElementById('lightboxModal').style.display = 'none'; }
 
         function moveLightboxSlide(direction) {
-            if (!viewingProduct || !viewingProduct.images) return;
+            const imgs = getCleanProductImages();
+            if (imgs.length === 0) return;
             currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = viewingProduct.images.length - 1;
-            else if (currentImageIndex >= viewingProduct.images.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = imgs.length - 1;
+            else if (currentImageIndex >= imgs.length) currentImageIndex = 0;
             updateSliderView();
             updateLightboxView();
         }
@@ -1050,8 +1569,8 @@
         }
 
         function updateLightboxView() {
-            if (!viewingProduct || !viewingProduct.images) return;
-            const imgs = viewingProduct.images;
+            const imgs = getCleanProductImages();
+            if (imgs.length === 0) return;
             document.getElementById('lightboxImg').src = imgs[currentImageIndex] || '';
             document.getElementById('lightboxCounter').innerText = `${currentImageIndex + 1}/${imgs.length}`;
 
@@ -1089,11 +1608,132 @@
             document.getElementById('cartCount').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
         }
 
+        // ============================================================
+        // BOTTOM SHEET THANH TOÁN & CHUYỂN KHOẢN TRƯỚC / MOMO / QR
+        // ============================================================
+        let tempPaymentCode = 'COD';
+        let tempPaymentLabel = 'COD - Thanh toán khi giao';
+
+        function calcCurrentCartTotal() {
+            return cart.reduce((sum, item) => sum + ((Number(item.price) || 0) * (Number(item.qty) || 1)), 0);
+        }
+
+        function buildTransferMemoText() {
+            const phone = (document.getElementById('cusPhone')?.value || '').trim();
+            return phone ? `TT ${phone}` : 'THANH TOAN DON HANG';
+        }
+
+        function buildVietQrImageUrl(total, memo) {
+            return `https://img.vietqr.io/image/${PAYMENT_CONFIG.bankId}-${PAYMENT_CONFIG.accountNumber}-compact2.png?amount=${total}&addInfo=${encodeURIComponent(memo)}&accountName=${encodeURIComponent(PAYMENT_CONFIG.accountHolder)}`;
+        }
+
+        function buildPaymentInstructionHtml(code) {
+            const total = calcCurrentCartTotal();
+            const memo = buildTransferMemoText();
+
+            if (code === 'PREPAY_BANK') {
+                return `
+                    <div><b>Ngân hàng nhận:</b> ${PAYMENT_CONFIG.bankId} - STK <b>${PAYMENT_CONFIG.accountNumber}</b></div>
+                    <div>Chủ TK: <b>${PAYMENT_CONFIG.accountHolder}</b></div>
+                    <div>Số tiền chuyển trước: <b style="color:#d70018;">${total.toLocaleString()} đ</b> | Nội dung: <b>${memo}</b></div>
+                `;
+            }
+            if (code === 'PREPAY_MOMO') {
+                return `
+                    <div><b>Ví MoMo nhận:</b> SĐT/TK <b>${PAYMENT_CONFIG.momoPhone}</b> (${PAYMENT_CONFIG.momoHolder})</div>
+                    <div>Số tiền chuyển trước: <b style="color:#d70018;">${total.toLocaleString()} đ</b> | Nội dung: <b>${memo}</b></div>
+                `;
+            }
+            if (code === 'OTHER_BANK') {
+                return `
+                    <div>${PAYMENT_CONFIG.otherBankInfo}</div>
+                    <div>Số tiền chuyển trước: <b style="color:#d70018;">${total.toLocaleString()} đ</b> | Nội dung: <b>${memo}</b></div>
+                `;
+            }
+            return '';
+        }
+
+        function openPaymentSheet() {
+            tempPaymentCode = document.getElementById('selectedPaymentCode')?.value || 'COD';
+            tempPaymentLabel = document.getElementById('selectedPaymentLabel')?.innerText || 'COD - Thanh toán khi giao';
+
+            document.querySelectorAll('.pay-method-row').forEach(row => {
+                row.classList.toggle('selected', row.dataset.code === tempPaymentCode);
+            });
+            updateSheetExtraBoxes(tempPaymentCode);
+            document.getElementById('paymentSheetModal').classList.add('show');
+        }
+
+        function closePaymentSheet() {
+            document.getElementById('paymentSheetModal').classList.remove('show');
+        }
+
+        function selectPaymentRow(rowEl) {
+            tempPaymentCode = rowEl.dataset.code;
+            tempPaymentLabel = rowEl.dataset.label;
+            document.querySelectorAll('.pay-method-row').forEach(r => r.classList.remove('selected'));
+            rowEl.classList.add('selected');
+            updateSheetExtraBoxes(tempPaymentCode);
+        }
+
+        function updateSheetExtraBoxes(activeCode) {
+            document.querySelectorAll('.pay-extra-box').forEach(box => {
+                box.style.display = 'none';
+            });
+            if (activeCode === 'COD') return;
+            const target = document.getElementById('extra_' + activeCode);
+            if (target) {
+                target.innerHTML = buildPaymentInstructionHtml(activeCode);
+                target.style.display = 'block';
+            }
+        }
+
+        function confirmPaymentSelection() {
+            document.getElementById('selectedPaymentCode').value = tempPaymentCode;
+            document.getElementById('selectedPaymentLabel').innerText = tempPaymentLabel;
+            closePaymentSheet();
+            refreshActivePrepayPreview();
+        }
+
+        function refreshActivePrepayPreview() {
+            const code = document.getElementById('selectedPaymentCode')?.value || 'COD';
+            const cardEl = document.getElementById('prepaySummaryCard');
+            const detailEl = document.getElementById('prepayAccountDetails');
+            const qrImg = document.getElementById('prepayVietQrImg');
+            const hintEl = document.getElementById('prepayQrHint');
+            const chkEl = document.getElementById('prepayConfirmedCheck');
+            if (!cardEl || !detailEl || !qrImg || !hintEl) return;
+
+            if (code === 'COD') {
+                cardEl.style.display = 'none';
+                qrImg.style.display = 'none';
+                if (chkEl) chkEl.checked = false;
+                return;
+            }
+
+            const total = calcCurrentCartTotal();
+            const memo = buildTransferMemoText();
+            detailEl.innerHTML = buildPaymentInstructionHtml(code);
+            cardEl.style.display = 'block';
+
+            if (code === 'PREPAY_BANK' || code === 'PREPAY_MOMO') {
+                qrImg.src = buildVietQrImageUrl(total, memo);
+                qrImg.style.display = 'inline-block';
+                hintEl.innerText = code === 'PREPAY_MOMO'
+                    ? 'Mở ứng dụng MoMo quét mã QR trên hoặc chuyển tới SĐT MoMo đã nêu.'
+                    : 'Mở ứng dụng ngân hàng quét mã VietQR để tự điền đúng số tiền & nội dung.';
+            } else {
+                qrImg.style.display = 'none';
+                hintEl.innerText = 'Chuyển khoản liên ngân hàng 24/7 theo thông tin trên trước khi giao.';
+            }
+        }
+
         function openCartModal() {
             const listEl = document.getElementById('cartItemsList');
             if (cart.length === 0) {
                 listEl.innerHTML = '<p style="text-align: center; color: #777; padding: 20px;">Giỏ hàng của bạn đang trống.</p>';
                 document.getElementById('cartTotalBar').innerText = 'Tổng tiền: 0 đ';
+                refreshActivePrepayPreview();
                 document.getElementById('cartModal').style.display = 'flex';
                 return;
             }
@@ -1119,6 +1759,7 @@
             }).join('');
 
             document.getElementById('cartTotalBar').innerText = 'Tổng tiền: ' + total.toLocaleString() + ' đ';
+            refreshActivePrepayPreview();
             document.getElementById('cartModal').style.display = 'flex';
         }
 
@@ -1135,38 +1776,61 @@
             openCartModal();
         }
 
-        // ============================================================
-        // LỊCH SỬ ĐƠN MUA, THEO DÕI TRẠNG THÁI, HUỶ ĐƠN & ĐÁNH GIÁ
-        // ============================================================
         const LOCAL_ORDERS_KEY = 'anhnhung_customer_orders_v1';
         const LOCAL_PHONE_KEY = 'anhnhung_customer_phone_v1';
+        const LOCAL_DEL_CANCEL_KEY = 'anhnhung_deleted_cancelled_v1';
         let customerOrders = JSON.parse(localStorage.getItem(LOCAL_ORDERS_KEY) || '[]');
         let currentOrderTab = 'all';
         let pendingCancelOrderId = '';
-        let pendingReviewOrderId = '';
-        let selectedReviewStars = 5;
+        let draftRatings = {};
+        let isLookupBarHidden = false;
+
+        function isUserTypingComment() {
+            const active = document.activeElement;
+            return Boolean(active && active.classList && active.classList.contains('oh-comment-input'));
+        }
+
+        function clearAllDraftComments() {
+            draftRatings = {};
+            document.querySelectorAll('.oh-comment-input').forEach(inp => {
+                inp.value = '';
+            });
+        }
+
+        function setLookupBarVisibility(hidden) {
+            isLookupBarHidden = Boolean(hidden);
+            const barEl = document.querySelector('#orderHistoryModal .oh-phone-bar');
+            if (barEl) {
+                barEl.style.display = isLookupBarHidden ? 'none' : 'flex';
+            }
+        }
 
         function saveCustomerOrdersLocal() {
             localStorage.setItem(LOCAL_ORDERS_KEY, JSON.stringify(customerOrders));
             updateOrderStatusBadges();
         }
 
+        function normalizePhoneDigits(p) {
+            const digits = String(p || '').replace(/[^\d]/g, '');
+            if (digits.startsWith('84') && digits.length >= 10) return '0' + digits.slice(2);
+            if (digits.length === 9 && !digits.startsWith('0')) return '0' + digits;
+            return digits;
+        }
+
         function mapSheetStatusToTab(statusStr, confirmStr, hasReview) {
             const st = String(statusStr || '').trim().toLowerCase();
-            const cf = String(confirmStr || '').trim().toLowerCase();
-
             if (st.includes('huỷ') || st.includes('hủy') || st.includes('cancel')) return 'cancelled';
             if (st.includes('đã đánh giá') || hasReview) return 'done';
             if (st.includes('đã nhận') || st.includes('đã giao') || st.includes('hoàn thành')) return 'review';
-            if (st.includes('giao hàng') || st.includes('đang giao') || st.includes('ship')) return 'shipping';
-            if (st.includes('đã xác nhận') || st.includes('chờ lấy') || (cf && cf !== 'khách huỷ')) return 'pickup';
+            if (st.includes('đang giao') || st.includes('chờ giao') || st.includes('ship')) return 'shipping';
+            if (st.includes('đã xác nhận') || st.includes('chờ lấy') || st.includes('lấy hàng')) return 'pickup';
             return 'wait';
         }
 
         function updateOrderStatusBadges() {
             let cWait = 0, cPickup = 0, cShipping = 0, cReview = 0;
             customerOrders.forEach(o => {
-                const tab = mapSheetStatusToTab(o.status, o.confirm, Boolean(o.review));
+                const tab = mapSheetStatusToTab(o.status, o.confirm, Boolean(o.review || o.stars || o.comment));
                 if (tab === 'wait') cWait++;
                 else if (tab === 'pickup') cPickup++;
                 else if (tab === 'shipping') cShipping++;
@@ -1186,19 +1850,43 @@
         }
 
         function syncCustomerOrders(isManualLookup = false) {
-            const inputPhone = document.getElementById('lookupOrderPhone')
-                ? document.getElementById('lookupOrderPhone').value.trim()
-                : '';
-            if (inputPhone) localStorage.setItem(LOCAL_PHONE_KEY, inputPhone);
-            const savedPhone = localStorage.getItem(LOCAL_PHONE_KEY) || '';
+            if (!isManualLookup && isUserTypingComment()) return;
+
+            const lookupEl = document.getElementById('lookupOrderPhone');
+            const btnLookup = document.getElementById('btnLookupOrder');
+            const rawInput = lookupEl ? lookupEl.value.trim() : '';
+            const normInput = normalizePhoneDigits(rawInput);
+
+            if (normInput.length >= 8) {
+                localStorage.setItem(LOCAL_PHONE_KEY, normInput);
+            } else if (isManualLookup && rawInput !== '') {
+                showCustomAlert('Vui lòng nhập số điện thoại hợp lệ để tra cứu.');
+                return;
+            }
+
+            const savedPhone = normalizePhoneDigits(localStorage.getItem(LOCAL_PHONE_KEY) || '');
+            const activePhone = normInput.length >= 8 ? normInput : savedPhone;
             const orderIds = customerOrders.map(o => o.orderId).filter(Boolean);
 
-            if (!scriptURL || scriptURL.includes('DÁN_ĐƯỜNG_DẪN')) return;
-            if (!savedPhone && orderIds.length === 0) return;
+            if (!scriptURL || scriptURL.includes('DÁN_ĐƯỜNG_DẪN')) {
+                if (isManualLookup) setLookupBarVisibility(true);
+                if (!isUserTypingComment()) renderOrderHistoryList();
+                return;
+            }
+            if (!activePhone && orderIds.length === 0) {
+                if (isManualLookup) showCustomAlert('Vui lòng nhập SĐT đặt hàng để tra cứu.');
+                if (!isUserTypingComment()) renderOrderHistoryList();
+                return;
+            }
+
+            if (isManualLookup && btnLookup) {
+                btnLookup.disabled = true;
+                btnLookup.innerText = 'Đang tìm...';
+            }
 
             const qs = new URLSearchParams({
                 action: 'getOrders',
-                phone: savedPhone,
+                phone: activePhone,
                 orderIds: orderIds.join(','),
                 t: String(Date.now())
             });
@@ -1207,29 +1895,58 @@
                 .then(res => res.json())
                 .then(data => {
                     if (!data || !Array.isArray(data.orders)) return;
+
+                    const deletedIdsSet = new Set(
+                        JSON.parse(localStorage.getItem(LOCAL_DEL_CANCEL_KEY) || '[]')
+                    );
+
                     const mapOrders = new Map();
-                    customerOrders.forEach(o => mapOrders.set(o.orderId, o));
+                    customerOrders.forEach(o => mapOrders.set(String(o.orderId), o));
+
                     data.orders.forEach(srv => {
-                        const prev = mapOrders.get(srv.orderId) || {};
-                        mapOrders.set(srv.orderId, { ...prev, ...srv });
+                        const oid = String(srv.orderId || '');
+                        if (!oid || deletedIdsSet.has(oid)) return;
+
+                        const prev = mapOrders.get(oid) || {};
+                        mapOrders.set(oid, { ...prev, ...srv, orderId: oid });
                     });
-                    customerOrders = Array.from(mapOrders.values());
+
+                    customerOrders = Array.from(mapOrders.values()).filter(o => !deletedIdsSet.has(String(o.orderId)));
                     saveCustomerOrdersLocal();
 
-                    if (document.getElementById('orderHistoryModal').style.display === 'flex') {
+                    if (isManualLookup) {
+                        setLookupBarVisibility(true);
+                    }
+
+                    if (document.getElementById('orderHistoryModal').style.display === 'flex' && !isUserTypingComment()) {
                         renderOrderHistoryList();
                     }
                     if (isManualLookup && data.orders.length === 0) {
                         showCustomAlert('Không tìm thấy đơn hàng nào với SĐT này.');
                     }
                 })
-                .catch(err => console.error('Lỗi đồng bộ đơn hàng:', err));
+                .catch(err => {
+                    console.error('Lỗi đồng bộ đơn hàng:', err);
+                    if (isManualLookup) showCustomAlert('Không thể kết nối máy chủ tra cứu lúc này.');
+                })
+                .finally(() => {
+                    if (btnLookup) {
+                        btnLookup.disabled = false;
+                        btnLookup.innerText = 'Tra cứu';
+                    }
+                });
         }
 
         function openOrderHistoryModal(tabKey = 'all') {
-            const savedPhone = localStorage.getItem(LOCAL_PHONE_KEY) || '';
+            clearAllDraftComments();
+            setLookupBarVisibility(false);
+
             const phoneInput = document.getElementById('lookupOrderPhone');
-            if (phoneInput && savedPhone && !phoneInput.value) phoneInput.value = savedPhone;
+            const savedPhone = normalizePhoneDigits(localStorage.getItem(LOCAL_PHONE_KEY) || '');
+            if (phoneInput) {
+                phoneInput.value = savedPhone || '';
+            }
+
             document.getElementById('orderHistoryModal').style.display = 'flex';
             const btn = document.querySelector(`.oh-tab[data-tab="${tabKey}"]`) || document.querySelector('.oh-tab');
             switchOrderTab(tabKey, btn);
@@ -1237,24 +1954,112 @@
         }
 
         function closeOrderHistoryModal() {
+            clearAllDraftComments();
             document.getElementById('orderHistoryModal').style.display = 'none';
         }
 
         function switchOrderTab(tabKey, el) {
+            clearAllDraftComments();
             currentOrderTab = tabKey;
             document.querySelectorAll('.oh-tab').forEach(t => t.classList.remove('active'));
             if (el) el.classList.add('active');
             renderOrderHistoryList();
         }
 
+        function setCardStar(orderId, starCount) {
+            if (!draftRatings[orderId]) draftRatings[orderId] = { stars: 5, comment: '' };
+            draftRatings[orderId].stars = starCount;
+
+            const cardEl = document.querySelector(`.oh-card[data-order-id="${CSS.escape(String(orderId))}"]`);
+            if (cardEl) {
+                const starBtns = cardEl.querySelectorAll('.oh-star-btn');
+                starBtns.forEach((btn, idx) => {
+                    btn.classList.toggle('active', (idx + 1) <= starCount);
+                });
+                const labelEl = cardEl.querySelector('.oh-star-count-label');
+                if (labelEl) {
+                    labelEl.innerText = `(${starCount}/5 sao)`;
+                }
+            }
+        }
+
+        function setCardComment(orderId, commentVal) {
+            if (!draftRatings[orderId]) draftRatings[orderId] = { stars: 5, comment: '' };
+            draftRatings[orderId].comment = commentVal;
+        }
+
+        function submitCardReview(orderId) {
+            const draft = draftRatings[orderId] || { stars: 5, comment: '' };
+            const starNum = draft.stars || 5;
+            const commentInputEl = document.getElementById('ohComment_' + encodeURIComponent(orderId));
+            const comment = (commentInputEl ? commentInputEl.value : draft.comment || '').trim();
+            const starsIcon = '★'.repeat(starNum) + '☆'.repeat(5 - starNum);
+            const reviewSummary = `${starsIcon}${comment ? ' - ' + comment : ''}`;
+
+            const idx = customerOrders.findIndex(o => String(o.orderId) === String(orderId));
+            if (idx !== -1) {
+                customerOrders[idx].status = 'Đã đánh giá';
+                customerOrders[idx].stars = starsIcon;
+                customerOrders[idx].comment = comment;
+                customerOrders[idx].review = reviewSummary;
+                saveCustomerOrdersLocal();
+            }
+
+            delete draftRatings[orderId];
+            if (commentInputEl) commentInputEl.value = '';
+            renderOrderHistoryList();
+            showCustomAlert('Cảm ơn bạn đã đánh giá ' + starNum + ' sao!');
+
+            const fd = new URLSearchParams();
+            fd.append('action', 'submitReview');
+            fd.append('orderId', orderId);
+            fd.append('stars', String(starNum));
+            fd.append('starsIcon', starsIcon);
+            fd.append('comment', comment);
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
+        }
+
+        function deleteOrderItem(orderId, isCancelledTab) {
+            customerOrders = customerOrders.filter(o => String(o.orderId) !== String(orderId));
+            saveCustomerOrdersLocal();
+
+            const deletedIdsSet = new Set(
+                JSON.parse(localStorage.getItem(LOCAL_DEL_CANCEL_KEY) || '[]')
+            );
+            deletedIdsSet.add(String(orderId));
+            localStorage.setItem(LOCAL_DEL_CANCEL_KEY, JSON.stringify(Array.from(deletedIdsSet)));
+
+            renderOrderHistoryList();
+            showCustomAlert('Đã xoá đơn khỏi danh sách.');
+
+            const fd = new URLSearchParams();
+            fd.append('action', isCancelledTab ? 'deleteCancelledOrder' : 'deleteReviewedOrder');
+            fd.append('orderId', orderId);
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
+        }
+
         function renderOrderHistoryList() {
             const listEl = document.getElementById('orderHistoryList');
             if (!listEl) return;
 
+            const lookupEl = document.getElementById('lookupOrderPhone');
+            const filterPhone = normalizePhoneDigits(lookupEl ? lookupEl.value.trim() : '');
+            const deletedIdsSet = new Set(
+                JSON.parse(localStorage.getItem(LOCAL_DEL_CANCEL_KEY) || '[]')
+            );
+
             const filtered = customerOrders.filter(o => {
-                const tab = mapSheetStatusToTab(o.status, o.confirm, Boolean(o.review));
+                if (deletedIdsSet.has(String(o.orderId))) return false;
+                if (filterPhone && filterPhone.length >= 8) {
+                    if (normalizePhoneDigits(o.phone) !== filterPhone) return false;
+                }
+                const tab = mapSheetStatusToTab(o.status, o.confirm, Boolean(o.review || o.stars || o.comment));
                 if (currentOrderTab === 'all') return true;
                 if (currentOrderTab === 'review') return tab === 'review' || tab === 'done';
+                if (currentOrderTab === 'cancelled') {
+                    const stLow = String(o.status || '').toLowerCase();
+                    return tab === 'cancelled' || stLow.includes('huỷ') || stLow.includes('hủy');
+                }
                 return tab === currentOrderTab;
             });
 
@@ -1264,7 +2069,8 @@
             }
 
             listEl.innerHTML = filtered.map(o => {
-                const tab = mapSheetStatusToTab(o.status, o.confirm, Boolean(o.review));
+                const oid = String(o.orderId || '');
+                const tab = mapSheetStatusToTab(o.status, o.confirm, Boolean(o.review || o.stars || o.comment));
                 let badgeClass = 'st-wait';
                 let statusLabel = o.status || 'Chờ xác nhận';
 
@@ -1274,31 +2080,61 @@
                 else if (tab === 'done') { badgeClass = 'st-done'; statusLabel = 'Hoàn thành & Đã đánh giá'; }
                 else if (tab === 'cancelled') { badgeClass = 'st-cancel'; statusLabel = 'Đã huỷ'; }
 
-                const safeOrderId = String(o.orderId || '').replace(/'/g, "\\'");
-                const safeProdName = String(o.products || '').replace(/'/g, "\\'");
+                const safeOrderId = oid.replace(/'/g, "\\'");
+                const rawStatusLower = String(o.status || '').trim().toLowerCase();
+                const isCancelledOrder = (tab === 'cancelled') || (currentOrderTab === 'cancelled') || rawStatusLower.includes('huỷ') || rawStatusLower.includes('hủy');
+                const isReviewSection = (currentOrderTab === 'review') || (tab === 'review') || (tab === 'done');
 
                 let actionButtons = '';
-                if (tab === 'wait' || tab === 'pickup') {
+                if (!isCancelledOrder && (tab === 'wait' || tab === 'pickup')) {
                     actionButtons += `<button type="button" class="btn-oh-cancel" onclick="openCancelOrderModal('${safeOrderId}')">Huỷ đơn hàng</button>`;
                 }
-                if (tab === 'pickup' || tab === 'shipping') {
+                if (!isCancelledOrder && (tab === 'pickup' || tab === 'shipping')) {
                     actionButtons += `<button type="button" class="btn-oh-primary" onclick="markOrderReceived('${safeOrderId}')">Đã nhận được hàng</button>`;
                 }
-                if (tab === 'review') {
-                    actionButtons += `<button type="button" class="btn-oh-primary" onclick="openReviewOrderModal('${safeOrderId}', '${safeProdName}')">Đánh giá sao &amp; Bình luận</button>`;
+                if (isCancelledOrder) {
+                    actionButtons += `<button type="button" class="btn-oh-cancel" style="background:#fff5f5; border-color:#d70018; color:#d70018; font-weight:700;" onclick="deleteOrderItem('${safeOrderId}', true)"><i class="fa-solid fa-trash"></i> Xoá</button>`;
+                } else if (isReviewSection) {
+                    actionButtons += `<button type="button" class="btn-oh-cancel" style="background:#fff5f5; border-color:#d70018; color:#d70018; font-weight:700;" onclick="deleteOrderItem('${safeOrderId}', false)"><i class="fa-solid fa-trash"></i> Xoá</button>`;
+                }
+
+                let ratingBoxHtml = '';
+                if (currentOrderTab === 'review' || tab === 'review') {
+                    const currentStar = (draftRatings[oid] && draftRatings[oid].stars) ? draftRatings[oid].stars : 5;
+                    const currentComment = (draftRatings[oid] && draftRatings[oid].comment) ? draftRatings[oid].comment : '';
+                    let starsHtml = '';
+                    for (let s = 1; s <= 5; s++) {
+                        starsHtml += `<button type="button" class="oh-star-btn ${s <= currentStar ? 'active' : ''}" onclick="setCardStar('${safeOrderId}', ${s})">★</button>`;
+                    }
+                    const inputId = 'ohComment_' + encodeURIComponent(oid);
+                    ratingBoxHtml = `
+                        <div style="margin-top:8px; padding-top:8px; border-top:1px dashed #e5e7eb;">
+                            <div class="oh-card-stars">
+                                <span style="font-size:12.5px; font-weight:600; color:#333;">Đánh giá sao:</span>
+                                ${starsHtml}
+                                <span class="oh-star-count-label" style="font-size:12px; color:#666;">(${currentStar}/5 sao)</span>
+                            </div>
+                            <div class="oh-comment-row">
+                                <input type="text" id="${inputId}" class="oh-comment-input" value="${currentComment.replace(/"/g, '&quot;')}" oninput="setCardComment('${safeOrderId}', this.value)" placeholder="Nhập Comment đánh giá sản phẩm...">
+                                <button type="button" class="btn-oh-primary" onclick="submitCardReview('${safeOrderId}')">Gửi đánh giá</button>
+                            </div>
+                        </div>
+                    `;
                 }
 
                 return `
-                    <div class="oh-card">
+                    <div class="oh-card" data-order-id="${oid.replace(/"/g, '&quot;')}">
                         <div class="oh-card-top">
-                            <span>Mã đơn: <b>${o.orderId}</b> (${o.date || ''} ${o.time || ''})</span>
+                            <span>Mã đơn: <b>${oid}</b> (${o.date || ''} ${o.time || ''})</span>
                             <span class="oh-status-pill ${badgeClass}">${statusLabel}</span>
                         </div>
                         <div style="font-size:14px; font-weight:600; color:#222; margin-bottom:4px;">${o.products}</div>
                         <div style="font-size:12.5px; color:#555;">Người nhận: ${o.name} - ${o.phone} | Đ/c: ${o.address}</div>
+                        ${o.payMethod ? `<div style="font-size:12px; color:#004aad; margin-top:3px;">Thanh toán: <b>${o.payMethod}</b></div>` : ''}
                         <div style="font-size:13.5px; color:#d70018; font-weight:700; margin-top:4px;">Tổng thanh toán: ${Number(String(o.total).replace(/[^\d]/g, '') || 0).toLocaleString()} đ</div>
                         ${o.cancelReason ? `<div style="font-size:12px; color:#842029; margin-top:4px;">Lý do huỷ: <b>${o.cancelReason}</b></div>` : ''}
-                        ${o.review ? `<div style="font-size:12.5px; color:#0f5132; background:#f1f8f5; padding:6px 8px; border-radius:6px; margin-top:6px;">Đánh giá của bạn: <b>${o.review}</b></div>` : ''}
+                        ${o.review ? `<div style="font-size:12.5px; color:#0f5132; background:#f1f8f5; padding:6px 8px; border-radius:6px; margin-top:6px;">Đánh giá đã gửi: <b>${o.review}</b></div>` : ''}
+                        ${ratingBoxHtml}
                         ${actionButtons ? `<div class="oh-actions">${actionButtons}</div>` : ''}
                     </div>
                 `;
@@ -1324,7 +2160,7 @@
 
             const idx = customerOrders.findIndex(o => o.orderId === pendingCancelOrderId);
             if (idx !== -1) {
-                customerOrders[idx].status = 'Đã huỷ';
+                customerOrders[idx].status = 'Đã huỷ đơn';
                 customerOrders[idx].cancelReason = finalReason;
                 saveCustomerOrdersLocal();
                 renderOrderHistoryList();
@@ -1354,47 +2190,19 @@
             fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
         }
 
-        function openReviewOrderModal(orderId, productName) {
-            pendingReviewOrderId = orderId;
-            document.getElementById('reviewOrderProductName').innerText = productName;
-            document.getElementById('reviewCommentInput').value = '';
-            setReviewStars(5);
-            document.getElementById('reviewOrderModal').style.display = 'flex';
-        }
-        function closeReviewOrderModal() { document.getElementById('reviewOrderModal').style.display = 'none'; }
-        function setReviewStars(starCount) {
-            selectedReviewStars = starCount;
-            document.querySelectorAll('#starPicker span').forEach(sp => {
-                sp.classList.toggle('active', Number(sp.dataset.star) <= starCount);
-            });
-        }
-        function submitOrderReview() {
-            const comment = document.getElementById('reviewCommentInput').value.trim();
-            const reviewSummary = `${selectedReviewStars}★ - ${comment || 'Sản phẩm tốt'}`;
-
-            const idx = customerOrders.findIndex(o => o.orderId === pendingReviewOrderId);
-            if (idx !== -1) {
-                customerOrders[idx].status = 'Đã đánh giá';
-                customerOrders[idx].review = reviewSummary;
-                saveCustomerOrdersLocal();
-                renderOrderHistoryList();
-            }
-            closeReviewOrderModal();
-            showCustomAlert('Cảm ơn bạn đã đánh giá ' + selectedReviewStars + ' sao!');
-
-            const fd = new URLSearchParams();
-            fd.append('action', 'submitReview');
-            fd.append('orderId', pendingReviewOrderId);
-            fd.append('stars', String(selectedReviewStars));
-            fd.append('comment', comment);
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: fd });
-        }
-
-        // 2. GỬI ĐƠN HÀNG TỪ WEB VỀ TAB "Orders" TRÊN GOOGLE SHEETS
         function submitToGoogleSheet(e) {
             e.preventDefault();
             if (cart.length === 0) {
                 showCustomAlert('Giỏ hàng trống!');
+                return;
+            }
+
+            const payCode = document.getElementById('selectedPaymentCode')?.value || 'COD';
+            const payLabel = document.getElementById('selectedPaymentLabel')?.innerText || 'COD - Thanh toán khi giao';
+            const prepayChecked = document.getElementById('prepayConfirmedCheck')?.checked;
+
+            if (payCode !== 'COD' && !prepayChecked) {
+                showCustomAlert('Vui lòng tick xác nhận thanh toán trước ở khung thông tin chuyển khoản.');
                 return;
             }
 
@@ -1415,8 +2223,9 @@
             const totalAmount = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
             const orderId = 'DH' + Date.now();
             const now = new Date();
+            const initStatus = payCode === 'COD' ? 'Chờ xác nhận' : 'Chờ xác nhận thanh toán';
 
-            localStorage.setItem(LOCAL_PHONE_KEY, phone);
+            localStorage.setItem(LOCAL_PHONE_KEY, normalizePhoneDigits(phone));
             customerOrders.unshift({
                 orderId: orderId,
                 date: now.toLocaleDateString('vi-VN'),
@@ -1427,10 +2236,13 @@
                 products: cartDetails,
                 quantity: soLuong,
                 total: totalAmount,
-                status: 'Chờ xử lý',
+                status: initStatus,
                 confirm: '',
                 cancelReason: '',
-                review: ''
+                stars: '',
+                comment: '',
+                review: '',
+                payMethod: payLabel
             });
             saveCustomerOrdersLocal();
 
@@ -1438,16 +2250,21 @@
             submitBtn.innerText = 'Đang gửi đơn...';
             submitBtn.disabled = true;
 
+            const resetAfterOrder = (msg) => {
+                submitBtn.innerText = 'Xác Nhận Đặt Hàng';
+                submitBtn.disabled = false;
+                cart = [];
+                updateCartBadge();
+                closeCartModal();
+                document.getElementById('orderForm').reset();
+                document.getElementById('selectedPaymentCode').value = 'COD';
+                document.getElementById('selectedPaymentLabel').innerText = 'COD - Thanh toán khi giao';
+                refreshActivePrepayPreview();
+                showCustomAlert(msg);
+            };
+
             if (!scriptURL || scriptURL.includes('DÁN_ĐƯỜNG_DẪN')) {
-                setTimeout(() => {
-                    submitBtn.innerText = 'Xác Nhận Đặt Hàng';
-                    submitBtn.disabled = false;
-                    cart = [];
-                    updateCartBadge();
-                    closeCartModal();
-                    document.getElementById('orderForm').reset();
-                    showCustomAlert('Đặt hàng thành công! (Chưa cấu hình link Google Sheets)');
-                }, 800);
+                setTimeout(() => resetAfterOrder('Đặt hàng thành công! (Chưa cấu hình link Google Sheets)'), 800);
                 return;
             }
 
@@ -1461,26 +2278,15 @@
             formData.append('cartDetails', cartDetails);
             formData.append('quantity', soLuong);
             formData.append('total', totalAmount);
+            formData.append('payMethod', payLabel);
 
             fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData })
             .then(() => {
-                submitBtn.innerText = 'Xác Nhận Đặt Hàng';
-                submitBtn.disabled = false;
-                cart = [];
-                updateCartBadge();
-                closeCartModal();
-                document.getElementById('orderForm').reset();
-                showCustomAlert('Đặt hàng thành công! Đơn hàng đã được lưu lên Google Sheets.');
+                resetAfterOrder('Đặt hàng thành công! Đơn hàng đã được lưu lên Google Sheets.');
                 setTimeout(() => syncCustomerOrders(false), 1500);
             })
             .catch(() => {
-                submitBtn.innerText = 'Xác Nhận Đặt Hàng';
-                submitBtn.disabled = false;
-                cart = [];
-                updateCartBadge();
-                closeCartModal();
-                document.getElementById('orderForm').reset();
-                showCustomAlert('Đặt hàng thành công!');
+                resetAfterOrder('Đặt hàng thành công!');
             });
         }
 
@@ -1488,16 +2294,15 @@
         updateOrderStatusBadges();
         syncCustomerOrders(false);
 
-        // Tự động kiểm tra cập nhật mỗi 4 giây & khi quay lại tab trình duyệt
         setInterval(() => {
-            if (!document.hidden) {
+            if (!document.hidden && !isUserTypingComment()) {
                 loadProductsFromSheet(true);
                 syncCustomerOrders(false);
             }
         }, 4000);
 
         document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) {
+            if (!document.hidden && !isUserTypingComment()) {
                 loadProductsFromSheet(true);
                 syncCustomerOrders(false);
             }
