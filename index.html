@@ -10,7 +10,6 @@
         body { background-color: #f0f2f5; color: #333; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
         .top-banner { background: #002b5e; color: #ffcc00; text-align: center; padding: 6px 15px; font-size: 12px; font-weight: bold; flex-shrink: 0; }
 
-        /* HEADER VÀ THANH TÌM KIẾM CÂN BẰNG */
         header { background: #004aad; padding: 10px 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 100; }
         .search-container-pill { width: 100%; max-width: 650px; display: flex; align-items: center; background: white; border-radius: 30px; overflow: hidden; padding: 4px 6px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
 
@@ -23,7 +22,6 @@
         .main-wrapper { max-width: 1240px; width: 100%; margin: 0 auto; padding: 10px 12px 0 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; overflow: hidden; }
         .sticky-filter-bar { flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; background: #f0f2f5; padding-bottom: 4px; z-index: 50; }
 
-        /* THANH ĐƠN MUA & THEO DÕI ĐƠN HÀNG */
         .order-tracker-bar { background: white; border-radius: 8px; padding: 10px 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .order-tracker-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 6px; margin-bottom: 8px; border-bottom: 1px solid #f0f0f0; }
         .order-tracker-title { font-size: 14px; font-weight: 700; color: #004aad; }
@@ -67,7 +65,6 @@
         .btn-buy { flex: 1; background: linear-gradient(90deg, #ff6600, #ff8800); color: white; border: none; padding: 6px 2px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; }
         @media (min-width: 768px) { .btn-detail, .btn-buy { padding: 8px; font-size: 13px; } }
 
-        /* MÔ TẢ GỌN GÀNG TRÊN CHI TIẾT SẢN PHẨM */
         .product-desc-compact {
             font-size: 13px;
             line-height: 1.5;
@@ -82,6 +79,7 @@
         .product-desc-compact.clamped {
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -96,10 +94,7 @@
             padding: 0;
         }
 
-        /* NÚT XEM VIDEO THEO YÊU CẦU */
-        .product-video-trigger-wrap {
-            margin-top: 12px;
-        }
+        .product-video-trigger-wrap { margin-top: 12px; }
         .btn-watch-video {
             background: #004aad;
             color: #fff;
@@ -113,9 +108,7 @@
             align-items: center;
             gap: 8px;
         }
-        .btn-watch-video:hover {
-            background: #00337a;
-        }
+        .btn-watch-video:hover { background: #00337a; }
         .product-video-player-box {
             margin-top: 10px;
             padding: 10px;
@@ -131,13 +124,9 @@
             border: none;
             background: #000;
         }
-        .product-video-player-box iframe {
-            height: 230px;
-        }
+        .product-video-player-box iframe { height: 230px; }
 
-        /* NÚT HOTLINE & WIDGET ZALO PHÍA DƯỚI GÓC PHẢI */
         .floating-hotline { position: fixed; bottom: 20px; right: 20px; background: #d70018; color: white; padding: 10px 16px; border-radius: 50px; font-weight: bold; font-size: 14px; text-decoration: none; box-shadow: 0 4px 15px rgba(215, 0, 24, 0.4); display: flex; align-items: center; gap: 8px; z-index: 900; }
-
         .floating-zalo-btn { position: fixed; bottom: 78px; right: 20px; width: 48px; height: 48px; background: #0068ff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0, 104, 255, 0.45); cursor: pointer; z-index: 950; transition: transform 0.2s; border: 2px solid white; font-weight: 900; font-size: 14px; }
         .floating-zalo-btn:hover { transform: scale(1.08); }
 
@@ -165,7 +154,6 @@
         .detail-section { padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
         .detail-section-title { font-size: 16px; font-weight: 700; color: #004aad; margin-bottom: 10px; text-transform: uppercase; }
 
-        /* SLIDER ẢNH & ZOOM LIGHTBOX */
         .slider-container { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; background: #fafafa; border: 1px solid #eee; border-radius: 8px; padding: 10px; }
         .main-slider-img-wrap { position: relative; width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; cursor: zoom-in; }
         .main-slider-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -179,7 +167,6 @@
         .thumbnail-strip img { width: 55px; height: 55px; object-fit: contain; border: 2px solid #ddd; border-radius: 4px; cursor: pointer; background: white; padding: 2px; transition: 0.2s; flex-shrink: 0; }
         .thumbnail-strip img.active { border-color: #004aad; }
 
-        /* LIGHTBOX ZOOM MODAL */
         .lightbox-modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
         .lightbox-content { background: white; width: 100%; max-width: 850px; border-radius: 8px; padding: 20px; position: relative; display: flex; flex-direction: column; align-items: center; max-height: 90vh; }
         .lightbox-img-wrap { width: 100%; height: 450px; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 15px; }
@@ -217,180 +204,30 @@
         .btn-confirm { background: #28a745; color: white; }
         .btn-close { background: #6c757d; color: white; }
 
-        /* BOTTOM SHEET PHƯƠNG THỨC THANH TOÁN */
-        .pay-selector-card {
-            background: #f8fafd;
-            border: 1px solid #dce6f5;
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-        .pay-selector-card:hover {
-            border-color: #004aad;
-            background: #f0f6ff;
-        }
-        .prepay-summary-card {
-            display: none;
-            background: #fff;
-            border: 1px dashed #004aad;
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin-bottom: 12px;
-            font-size: 12.5px;
-            line-height: 1.55;
-            color: #1e293b;
-        }
-        .pay-sheet-backdrop {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.58);
-            z-index: 1600;
-            justify-content: center;
-            align-items: flex-end;
-        }
-        .pay-sheet-backdrop.show {
-            display: flex;
-        }
-        .pay-sheet-box {
-            background: #fff;
-            width: 100%;
-            max-width: 540px;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-            max-height: 88vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.22);
-            animation: paySheetUp 0.22s ease-out;
-        }
-        @keyframes paySheetUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-        .pay-sheet-header {
-            padding: 14px 18px 10px;
-            border-bottom: 1px solid #f0f0f0;
-            text-align: center;
-            position: relative;
-        }
-        .pay-sheet-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #111;
-        }
-        .pay-sheet-sub {
-            font-size: 12px;
-            color: #198754;
-            margin-top: 3px;
-        }
-        .pay-sheet-close {
-            position: absolute;
-            right: 16px;
-            top: 12px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #666;
-            cursor: pointer;
-            line-height: 1;
-        }
-        .pay-sheet-body {
-            padding: 8px 16px 16px;
-            overflow-y: auto;
-            flex: 1;
-        }
-        .pay-method-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 13px 6px;
-            border-bottom: 1px solid #f2f2f2;
-            cursor: pointer;
-        }
-        .pay-method-left {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            flex: 1;
-        }
-        .pay-badge-cod {
-            background: #16a34a;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 2px;
-        }
-        .pay-badge-momo {
-            background: #ae2070;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 2px;
-        }
-        .pay-radio {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .pay-method-row.selected .pay-radio {
-            border-color: #d70018;
-        }
-        .pay-method-row.selected .pay-radio::after {
-            content: "";
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #d70018;
-        }
-        .pay-extra-box {
-            display: none;
-            background: #f8fafd;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin: 6px 0 10px;
-            font-size: 12.5px;
-            line-height: 1.55;
-            color: #334155;
-        }
-        .pay-sheet-footer {
-            padding: 12px 16px;
-            border-top: 1px solid #eee;
-            background: #fff;
-        }
-        .btn-pay-confirm {
-            width: 100%;
-            background: #d70018;
-            color: #fff;
-            border: none;
-            border-radius: 24px;
-            padding: 12px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .btn-pay-confirm:hover {
-            background: #b80014;
-        }
+        .pay-selector-card { background: #f8fafd; border: 1px solid #dce6f5; border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.15s; }
+        .pay-selector-card:hover { border-color: #004aad; background: #f0f6ff; }
+        .prepay-summary-card { display: none; background: #fff; border: 1px dashed #004aad; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; font-size: 12.5px; line-height: 1.55; color: #1e293b; }
+        .pay-sheet-backdrop { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.58); z-index: 1600; justify-content: center; align-items: flex-end; }
+        .pay-sheet-backdrop.show { display: flex; }
+        .pay-sheet-box { background: #fff; width: 100%; max-width: 540px; border-top-left-radius: 16px; border-top-right-radius: 16px; max-height: 88vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.22); animation: paySheetUp 0.22s ease-out; }
+        @keyframes paySheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .pay-sheet-header { padding: 14px 18px 10px; border-bottom: 1px solid #f0f0f0; text-align: center; position: relative; }
+        .pay-sheet-title { font-size: 16px; font-weight: 700; color: #111; }
+        .pay-sheet-sub { font-size: 12px; color: #198754; margin-top: 3px; }
+        .pay-sheet-close { position: absolute; right: 16px; top: 12px; background: none; border: none; font-size: 24px; color: #666; cursor: pointer; line-height: 1; }
+        .pay-sheet-body { padding: 8px 16px 16px; overflow-y: auto; flex: 1; }
+        .pay-method-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 6px; border-bottom: 1px solid #f2f2f2; cursor: pointer; }
+        .pay-method-left { display: flex; align-items: flex-start; gap: 10px; flex: 1; }
+        .pay-badge-cod { background: #16a34a; color: #fff; font-size: 11px; font-weight: 800; padding: 2px 6px; border-radius: 4px; margin-top: 2px; }
+        .pay-badge-momo { background: #ae2070; color: #fff; font-size: 11px; font-weight: 800; padding: 2px 6px; border-radius: 4px; margin-top: 2px; }
+        .pay-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .pay-method-row.selected .pay-radio { border-color: #d70018; }
+        .pay-method-row.selected .pay-radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #d70018; }
+        .pay-extra-box { display: none; background: #f8fafd; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; margin: 6px 0 10px; font-size: 12.5px; line-height: 1.55; color: #334155; }
+        .pay-sheet-footer { padding: 12px 16px; border-top: 1px solid #eee; background: #fff; }
+        .btn-pay-confirm { width: 100%; background: #d70018; color: #fff; border: none; border-radius: 24px; padding: 12px; font-size: 15px; font-weight: 700; cursor: pointer; }
+        .btn-pay-confirm:hover { background: #b80014; }
 
-        /* MODAL LỊCH SỬ ĐƠN HÀNG, HUỶ ĐƠN & ĐÁNH GIÁ */
         .oh-tabs { display: flex; overflow-x: auto; border-bottom: 1px solid #eee; background: #f8f9fa; margin: 10px 0 12px; border-radius: 6px; }
         .oh-tab { flex: 1; min-width: 96px; padding: 9px 6px; border: none; background: none; font-size: 12.5px; font-weight: 600; color: #555; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
         .oh-tab.active { color: #004aad; border-bottom-color: #004aad; background: #fff; }
@@ -438,7 +275,6 @@
 
     <div class="main-wrapper">
         <div class="sticky-filter-bar">
-            <!-- THANH ĐƠN MUA -->
             <div class="order-tracker-bar">
                 <div class="order-tracker-head">
                     <span class="order-tracker-title">Đơn mua</span>
@@ -513,7 +349,6 @@
         </div>
     </div>
 
-    <!-- CÁC NÚT NỔI GÓC PHẢI (HOTLINE & ZALO) -->
     <a href="tel:0376857099" class="floating-hotline">
         <i class="fa-solid fa-phone"></i> Hotline: 0376.857.099
     </a>
@@ -522,7 +357,6 @@
         Zalo
     </div>
 
-    <!-- HỘP THOẠI POPUP CHAT ZALO -->
     <div class="zalo-popup" id="zaloPopup">
         <div class="zalo-popup-header">
             <div class="zalo-header-top">
@@ -542,12 +376,8 @@
         </div>
         <div class="zalo-popup-body">
             <div style="font-size: 13px; color: #777; margin-bottom: 15px;">Bắt đầu trò chuyện với Tổng Kho Ánh Nhung</div>
-            <a href="https://zalo.me/0376857099" target="_blank" class="zalo-btn-primary">
-                Chat bằng Zalo
-            </a>
-            <a href="tel:0376857099" class="zalo-btn-secondary">
-                Chat nhanh (Gọi 0376.857.099)
-            </a>
+            <a href="https://zalo.me/0376857099" target="_blank" class="zalo-btn-primary">Chat bằng Zalo</a>
+            <a href="tel:0376857099" class="zalo-btn-secondary">Chat nhanh (Gọi 0376.857.099)</a>
         </div>
     </div>
 
@@ -581,7 +411,6 @@
                         <div id="dtDesc" class="product-desc-compact clamped"></div>
                         <button type="button" id="btnToggleDesc" class="btn-toggle-desc" style="display:none;" onclick="toggleDetailDesc()">Xem thêm mô tả</button>
 
-                        <!-- NÚT BẤM MỞ VIDEO THEO YÊU CẦU -->
                         <div id="productVideoSection" class="product-video-trigger-wrap" style="display: none;">
                             <button type="button" id="btnToggleProductVideo" class="btn-watch-video" onclick="toggleProductVideo()">
                                 <i class="fa-solid fa-play-circle"></i>
@@ -631,7 +460,7 @@
         </div>
     </div>
 
-    <!-- MODAL PHÓNG TO ẢNH (LIGHTBOX ZOOM) -->
+    <!-- Lightbox -->
     <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
@@ -659,7 +488,6 @@
                 <div class="form-group"><input type="tel" id="cusPhone" name="phone" placeholder="Số điện thoại liên hệ *" oninput="refreshActivePrepayPreview()" required></div>
                 <div class="form-group"><textarea id="cusAddress" name="address" rows="2" placeholder="Địa chỉ giao hàng chi tiết *" required></textarea></div>
 
-                <!-- CHỌN PHƯƠNG THỨC THANH TOÁN (BOTTOM SHEET) -->
                 <div class="pay-selector-card" onclick="openPaymentSheet()">
                     <div>
                         <div style="font-size: 12px; color: #666;">Phương thức thanh toán</div>
@@ -669,7 +497,6 @@
                 </div>
                 <input type="hidden" id="selectedPaymentCode" value="COD">
 
-                <!-- THÔNG TIN CHUYỂN KHOẢN TRƯỚC / MÃ QR (TỰ HIỆN KHI CHỌN THANH TOÁN TRƯỚC) -->
                 <div id="prepaySummaryCard" class="prepay-summary-card">
                     <div id="prepayAccountDetails"></div>
                     <div style="text-align: center; margin-top: 8px;">
@@ -690,7 +517,7 @@
         </div>
     </div>
 
-    <!-- BOTTOM SHEET CHỌN PHƯƠNG THỨC THANH TOÁN -->
+    <!-- Bottom Sheet Phương Thức Thanh Toán -->
     <div class="pay-sheet-backdrop" id="paymentSheetModal" onclick="closePaymentSheet()">
         <div class="pay-sheet-box" onclick="event.stopPropagation()">
             <div class="pay-sheet-header">
@@ -754,7 +581,7 @@
         </div>
     </div>
 
-    <!-- Modal Lịch Sử Mua Hàng & Theo Dõi Đơn -->
+    <!-- Modal Lịch Sử Đơn Hàng -->
     <div class="modal" id="orderHistoryModal">
         <div class="modal-box">
             <span class="close-x" onclick="closeOrderHistoryModal()">&times;</span>
@@ -778,7 +605,7 @@
         </div>
     </div>
 
-    <!-- Modal Huỷ Đơn Hàng -->
+    <!-- Modal Huỷ Đơn -->
     <div class="modal" id="cancelOrderModal" style="z-index: 1200;">
         <div class="modal-box" style="max-width: 420px;">
             <span class="close-x" onclick="closeCancelOrderModal()">&times;</span>
@@ -801,7 +628,7 @@
         </div>
     </div>
 
-    <!-- Modal Thông Báo Tự Tắt Sau 2 Giây -->
+    <!-- Modal Thông Báo -->
     <div class="modal" id="customAlertModal" style="z-index: 2500;">
         <div class="modal-box alert-box">
             <i class="fa-solid fa-circle-check"></i>
@@ -811,85 +638,607 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbz6KFdA1HU-7LmD78b8UN7JBWY9lfqqSdm_xx-JWsf6A9qM7QcuJbstPUDmlSEms2mP8g/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzSUXQWQSzch65oqzotT1Ec5v0DzmTebBMj6CJKOHj74JclMtW-n-W3cAJma5yEMjCY-w/exec';
 
-        // ============================================================
-        // CẤU HÌNH TÀI KHOẢN NHẬN THANH TOÁN TRƯỚC (TỰ ĐIỀN THÔNG TIN CỦA BẠN)
-        // ============================================================
         const PAYMENT_CONFIG = {
-            bankId: 'VCB',                     // Mã ngân hàng VietQR (VD: VCB, MB, TCB, ACB, BIDV, ICB...)
-            accountNumber: '0000000000',       // Số tài khoản ngân hàng của bạn
-            accountHolder: 'TONG KHO BEP TU ANH NHUNG',
-            momoPhone: '0376857099',           // SĐT / tài khoản MoMo của bạn
-            momoHolder: 'TONG KHO BEP TU ANH NHUNG',
-            otherBankInfo: 'Ngân hàng phụ: [Tên ngân hàng] - STK: [Số tài khoản] - Chủ TK: TONG KHO BEP TU ANH NHUNG'
+            bankId: 'BIDV',
+            accountNumber: '56210004491648',
+            accountHolder: 'NGUYEN THANH KHOI',
+            momoPhone: '0376857099',
+            momoHolder: 'NGUYEN THANH KHOI',
+            otherBankInfo: 'BIDV-CN Quảng Nam - STK: 56210004491648 - Chủ TK: NGUYEN THANH KHOI'
         };
 
+        function stripStopAndGoText(rawText) {
+            return String(rawText || '')
+                .replace(/['"“”‘’]?\s*stop\s*&\s*go\s*['"“”‘’]?/gi, ' ')
+                .replace(/[ 	]{2,}/g, ' ')
+                .replace(/\s+([,.;:!?])/g, '$1')
+                .trim();
+        }
+
+        function parseTextToSixRegions(rawText) {
+            const text = String(rawText || '').trim();
+            if (!text) return null;
+
+            const regions = {
+                dacDinh: '',
+                congNghe: '',
+                tinhNang: '',
+                anToan: '',
+                thongSo: '',
+                xuatXu: ''
+            };
+
+            const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+            let currentKey = 'dacDinh';
+            let hasLabelOrContent = false;
+
+            const patterns = [
+                { key: 'dacDinh', regex: /^(dacdinh|đặc\s*tính(\s*sản\s*phẩm)?|đặc\s*điểm)\s*[:：]?\s*/i },
+                { key: 'congNghe', regex: /^(congnghe|công\s*nghệ(\s*inverter)?)\s*[:：]?\s*/i },
+                { key: 'tinhNang', regex: /^(tinhnang|tính\s*năng(\s*nổi\s*bật)?)\s*[:：]?\s*/i },
+                { key: 'anToan', regex: /^(antoan|chức\s*năng\s*an\s*toàn|an\s*toàn)\s*[:：]?\s*/i },
+                { key: 'thongSo', regex: /^(thongso|thông\s*số(\s*k[ỹĩ]\s*thuật)?)\s*[:：]?\s*/i },
+                { key: 'xuatXu', regex: /^(xuatxu|xuất\s*(xứ|khẩu)(\s*&\s*bảo\s*hành)?|bảo\s*hành)\s*[:：]?\s*/i }
+            ];
+
+            lines.forEach(line => {
+                let matched = false;
+                for (let i = 0; i < patterns.length; i++) {
+                    const p = patterns[i];
+                    if (p.regex.test(line)) {
+                        currentKey = p.key;
+                        hasLabelOrContent = true;
+                        const val = stripStopAndGoText(line.replace(p.regex, '').trim());
+                        if (val) {
+                            regions[currentKey] = regions[currentKey] ? (regions[currentKey] + '\n' + val) : val;
+                        }
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched) {
+                    const cleanLine = stripStopAndGoText(line);
+                    if (!cleanLine) return;
+                    regions[currentKey] = regions[currentKey] ? (regions[currentKey] + '\n' + cleanLine) : cleanLine;
+                    hasLabelOrContent = true;
+                }
+            });
+
+            return hasLabelOrContent ? regions : null;
+        }
+
+        function resolveSixRegionSpecs(product) {
+            if (!product) return null;
+
+            if (product.specs && typeof product.specs === 'object') {
+                return {
+                    dacDinh: stripStopAndGoText(product.specs.dacDinh || ''),
+                    congNghe: stripStopAndGoText(product.specs.congNghe || ''),
+                    tinhNang: stripStopAndGoText(product.specs.tinhNang || ''),
+                    anToan: stripStopAndGoText(product.specs.anToan || ''),
+                    thongSo: stripStopAndGoText(product.specs.thongSo || ''),
+                    xuatXu: stripStopAndGoText(product.specs.xuatXu || '')
+                };
+            }
+
+            if (typeof product.specs === 'string' && product.specs.trim()) {
+                const fromSpecsStr = parseTextToSixRegions(product.specs);
+                if (fromSpecsStr) return fromSpecsStr;
+            }
+
+            return parseTextToSixRegions(product.desc || '');
+        }
+
         let defaultProducts = [
-            { id: 1, name: "LÕI 1", brand: "AQUA", category: "loc-nuoc", marketPrice: 10000, price: 2000, discountPrice: 0, images: ["images/loi1.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 1." },
-            { id: 2, name: "LÕI 2", brand: "AQUA", category: "loc-nuoc", marketPrice: 13000, price: 33334, discountPrice: 0, images: ["images/loi2.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 2." },
-            { id: 3, name: "LÕI 3", brand: "AQUA", category: "loc-nuoc", marketPrice: 10000, price: 33334, discountPrice: 0, images: ["images/loi3.jpg"], desc: "Lõi lọc nước chính hãng Aqua số 3." },
-            { id: 4, name: "MÁY LỌC NÓNG NGUỘI", brand: "AQUA", category: "loc-nuoc", marketPrice: 2950000, price: 5500000, discountPrice: 0, images: ["images/maylocnuoc.jpg"], desc: "Máy lọc nước nóng nguội Aqua cao cấp." },
             {
-                id: 5,
-                name: "BE388SA",
-                brand: "BAUER",
-                category: "bep-tu",
-                marketPrice: 4800000,
-                price: 9000000,
-                discountPrice: 0,
-                images: [
+                "id": 1,
+                "name": "LÕI LỌC LÕI 1",
+                "brand": "AQUA",
+                "category": "loc-nuoc",
+                "marketPrice": 10000,
+                "price": 33334,
+                "discountPrice": 0,
+                "images": ["images/sp_1.jpg"],
+                "desc": "LÕI LỌC LÕI 1 - Thương hiệu AQUA (Giá nhập: 10,000 đ)."
+            },
+            {
+                "id": 2,
+                "name": "LÕI LỌC LÕI 2",
+                "brand": "AQUA",
+                "category": "loc-nuoc",
+                "marketPrice": 13000,
+                "price": 33333,
+                "discountPrice": 0,
+                "images": ["images/sp_2.jpg"],
+                "desc": "LÕI LỌC LÕI 2 - Thương hiệu AQUA (Giá nhập: 13,000 đ)."
+            },
+            {
+                "id": 3,
+                "name": "LÕI LỌC LÕI 3",
+                "brand": "AQUA",
+                "category": "loc-nuoc",
+                "marketPrice": 10000,
+                "price": 33333,
+                "discountPrice": 0,
+                "images": ["images/sp_3.jpg"],
+                "desc": "LÕI LỌC LÕI 3 - Thương hiệu AQUA (Giá nhập: 10,000 đ)."
+            },
+            {
+                "id": 4,
+                "name": "MÁY LỌC NÓNG NGUỘI",
+                "brand": "AQUA",
+                "category": "loc-nuoc",
+                "marketPrice": 2950000,
+                "price": 5500000,
+                "discountPrice": 0,
+                "images": ["images/sp_4.jpg"],
+                "desc": "MÁY LỌC NÓNG NGUỘI - Thương hiệu AQUA (Giá nhập: 2,950,000 đ)."
+            },
+            {
+                "id": 5,
+                "name": "BẾP TỪ BE388SA",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 4800000,
+                "price": 9000000,
+                "discountPrice": 0,
+                "images": [
                     "https://hsn.vn/images/stories/virtuemart/product/kich-thuoc-bep-tu-bauer-be-388sa.jpg",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvRDJvBi7PIiMRKRHzgOdiVCEqZdPI56MIcruvJcoZn4wWD8kV6jOQ-Ho&s=10"
                 ],
-                desc: "Bếp từ 2 vùng nấu cảm ứng từ, mặt kính Euro Diamond vát 4 cạnh, bo viền hợp kim nhôm Aluminium cao cấp.",
-                specs: {
-                    dacDinh: "Bếp từ 2 vùng nấu cảm ứng từ. Mặt kính Euro Diamond, vát 4 cạnh, bo viền hợp kim nhôm Aluminium cao cấp.",
-                    congNghe: "Biến tần Inverter thông minh vượt trội đun nấu và giữ nhiệt ở mức nhiệt độ thấp nhất không tắt mở. Tiết kiệm lên tới 38% điện năng.",
-                    tinhNang: "Chức năng Booster siêu nhanh 2 vùng nấu riêng biệt Max 2400W. Điều khiển Slider Control cảm ứng 9 mức công suất độc lập. Tốc độ tăng nhiệt nhanh gấp 2 lần. Chức năng chiên rán nhiều cấp độ Pan-Fry | 80-240°C.",
-                    anToan: "Tạm dừng Pause 'Stop go', khóa trẻ em Child lock, tự động tắt khi không có nồi, chống trào nước Water overflows, hẹn giờ 99 phút, bảo vệ quá nhiệt, chỉ báo nhiệt dư 'H'.",
-                    thongSo: "Điện áp: 220-240V/50-60Hz | Tổng công suất: 4000W - Booster 4800W | Lò trái: 2000W (Booster 2400W) | Lò phải: 2000W (Booster 2400W) | Kích thước: R730 x S430 x C80 (mm) | Khoét đá: R680 x S390 (mm).",
-                    xuatXu: "Hãng sản xuất: Bauer | Xuất xứ: Malaysia | Bảo hành: 3 năm chính hãng."
+                "desc": "Bếp từ 2 vùng nấu cảm ứng từ, mặt kính Euro Diamond vát 4 cạnh, bo viền hợp kim nhôm Aluminium cao cấp.",
+                "specs": {
+                    "dacDinh": "Bếp từ 2 vùng nấu cảm ứng từ. Mặt kính Euro Diamond, vát 4 cạnh, bo viền hợp kim nhôm Aluminium cao cấp.",
+                    "congNghe": "Biến tần Inverter thông minh vượt trội đun nấu và giữ nhiệt ở mức nhiệt độ thấp nhất không tắt mở. Tiết kiệm lên tới 38% điện năng.",
+                    "tinhNang": "Chức năng Booster siêu nhanh 2 vùng nấu riêng biệt Max 2400W. Điều khiển Slider Control cảm ứng 9 mức công suất độc lập. Tốc độ tăng nhiệt nhanh gấp 2 lần. Chức năng chiên rán nhiều cấp độ Pan-Fry | 80-240°C.",
+                    "anToan": "Tạm dừng Pause, khóa trẻ em Child lock, tự động tắt khi không có nồi, chống trào nước Water overflows, hẹn giờ 99 phút, bảo vệ quá nhiệt, chỉ báo nhiệt dư 'H'.",
+                    "thongSo": "Điện áp: 220-240V/50-60Hz | Tổng công suất: 4000W - Booster 4800W | Lò trái: 2000W (Booster 2400W) | Lò phải: 2000W (Booster 2400W) | Kích thước: R730 x S430 x C80 (mm) | Khoét đá: R680 x S390 (mm).",
+                    "xuatXu": "Hãng sản xuất: Bauer | Xuất xứ: Malaysia | Bảo hành: 3 năm chính hãng."
                 }
             },
-            { id: 6, name: "BE638GTA", brand: "BAUER", category: "bep-tu", marketPrice: 4450000, price: 8400000, discountPrice: 0, images: ["https://hsn.vn/images/stories/virtuemart/product/bep-tu-2-vung-nau-bauer-be638gta.jpg"], desc: "Bếp từ Bauer BE638GTA công nghệ Inverter tiết kiệm điện." },
-            { id: 7, name: "BE626JPG", brand: "BAUER", category: "bep-tu", marketPrice: 5000000, price: 9000000, discountPrice: 0, images: ["images/be626.jpg"], desc: "Bếp từ Bauer BE626JPG mặt kính chống xước cao cấp." },
-            { id: 8, name: "BE32SS", brand: "BAUER", category: "bep-tu", marketPrice: 3900000, price: 7000000, discountPrice: 0, images: ["images/be32ss.jpg"], desc: "Bếp từ Bauer BE32SS thiết kế sang trọng, bền bỉ." },
-            { id: 9, name: "BE3008SI", brand: "BAUER", category: "bep-tu", marketPrice: 3300000, price: 7000000, discountPrice: 0, images: ["images/be3008.jpg"], desc: "Bếp từ Bauer BE3008SI hiệu năng ổn định." },
-            { id: 10, name: "BE668GTA PLUS", brand: "BAUER", category: "bep-tu", marketPrice: 6500000, price: 10500000, discountPrice: 0, images: ["images/be668.jpg"], desc: "Bếp từ Bauer BE668GTA PLUS cao cấp nhiều tính năng." },
-            { id: 11, name: "BC7035DC GRAND", brand: "BAUER", category: "hut-mui", marketPrice: 3400000, price: 5100000, discountPrice: 0, images: ["images/hutmui1.jpg"], desc: "Hút mùi kính cong Bauer BC7035DC GRAND lực hút mạnh mẽ." },
-            { id: 12, name: "BC6002B/7002B", brand: "BAUER", category: "hut-mui", marketPrice: 1900000, price: 2900000, discountPrice: 0, images: ["images/hutmui2.jpg"], desc: "Hút mùi âm tủ Bauer tiện lợi, tiết kiệm không gian." },
-            { id: 13, name: "BC70/90MTV", brand: "BAUER", category: "hut-mui", marketPrice: 3050000, price: 5000000, discountPrice: 0, images: ["images/hutmui3.jpg"], desc: "Hút mùi Bauer BC70/90MTV thiết kế hiện đại." },
-            { id: 14, name: "BCG70MSC", brand: "BAUER", category: "hut-mui", marketPrice: 2650000, price: 4300000, discountPrice: 0, images: ["images/hutmui4.jpg"], desc: "Hút mùi kính vát Bauer BCG70MSC." },
-            { id: 15, name: "BỘ NỒI WAVE (1 BỘ / 4 CÁI)", brand: "BAUER", category: "phu-kien", marketPrice: 980000, price: 1500000, discountPrice: 0, images: ["images/bonoiwave.jpg"], desc: "Bộ nồi inox Bauer Wave 4 món cao cấp dùng cho bếp từ." },
-            { id: 16, name: "BỘ NỒI PLUS (1 BỘ / 5 CÁI)", brand: "BAUER", category: "phu-kien", marketPrice: 1350000, price: 1850000, discountPrice: 0, images: ["images/bonoiplus.jpg"], desc: "Bộ nồi inox Bauer Plus 5 món." },
-            { id: 17, name: "NỒI LUỘC GÀ (1 CÁI)", brand: "BAUER", category: "phu-kien", marketPrice: 600000, price: 800000, discountPrice: 0, images: ["images/noiluocga.jpg"], desc: "Nồi luộc gà chuyên dụng kích thước lớn." },
-            { id: 18, name: "GT04-8050", brand: "GENTO", category: "chau-voi", marketPrice: 2450000, price: 3300000, discountPrice: 0, images: ["images/chau1.jpg"], desc: "Chậu rửa bát Gento GT04-8050 inox đúc cao cấp." },
-            { id: 19, name: "GT04 - 7843 NEW (Inox Chống Xước)", brand: "GENTO", category: "chau-voi", marketPrice: 2600000, price: 3600000, discountPrice: 0, images: ["images/chau2.jpg"], desc: "Chậu rửa bát Gento chống xước công nghệ mới." },
-            { id: 20, name: "GT04 - 8048", brand: "GENTO", category: "chau-voi", marketPrice: 2350000, price: 3350000, discountPrice: 0, images: ["images/chau3.jpg"], desc: "Chậu rửa bát Gento GT04-8048." },
-            { id: 21, name: "RL - 804", brand: "GENTO", category: "chau-voi", marketPrice: 450000, price: 750000, discountPrice: 0, images: ["images/voi1.jpg"], desc: "Vòi nước rửa chén Gento RL-804 sáng bóng." },
-            { id: 22, name: "RL - 908", brand: "GENTO", category: "chau-voi", marketPrice: 600000, price: 800000, discountPrice: 0, images: ["images/voi2.jpg"], desc: "Vòi nước rửa chén Gento RL-908." },
-            { id: 23, name: "GT - 206 NEW", brand: "GENTO", category: "chau-voi", marketPrice: 1450000, price: 1700000, discountPrice: 0, images: ["images/voi3.jpg"], desc: "Vòi rửa bát cao cấp Gento GT-206 New." },
-            { id: 24, name: "PT-1126PLUS", brand: "PRATO", category: "bep-tu", marketPrice: 1100000, price: 1850000, discountPrice: 0, images: ["images/pt1126plus.jpg"], desc: "Bếp từ Prato PT-1126PLUS chính hãng." },
-            { id: 25, name: "PT-1126T-1", brand: "PRATO", category: "bep-tu", marketPrice: 850000, price: 1400000, discountPrice: 0, images: ["images/pt1126t1.jpg"], desc: "Bếp từ đơn Prato PT-1126T-1." },
-            { id: 26, name: "PT-028", brand: "PRATO", category: "bep-tu", marketPrice: 3050000, price: 8300000, discountPrice: 0, images: ["images/pt028.jpg"], desc: "Bếp từ đôi Prato PT-028 cao cấp công nghệ Inverter Dualcore." },
-            { id: 27, name: "PT-662", brand: "PRATO", category: "bep-tu", marketPrice: 3600000, price: 9150000, discountPrice: 0, images: ["images/pt662.jpg"], desc: "Bếp từ Prato PT-662 mặt kính Euro Platinum vát cạnh." },
-            { id: 28, name: "PT-9CL.3V", brand: "PRATO", category: "loc-nuoc", marketPrice: 2600000, price: 4600000, discountPrice: 0, images: ["images/locprato1.jpg"], desc: "Hệ thống lọc nước Prato PT-9CL.3V." },
-            { id: 29, name: "PT-9NG", brand: "PRATO", category: "loc-nuoc", marketPrice: 1900000, price: 3300000, discountPrice: 0, images: ["images/locprato2.jpg"], desc: "Máy lọc nước Prato PT-9NG." },
-            { id: 30, name: "PT-9NK.2V", brand: "PRATO", category: "loc-nuoc", marketPrice: 2300000, price: 4500000, discountPrice: 0, images: ["images/locprato3.jpg"], desc: "Lọc nước Prato PT-9NK.2V chính hãng." },
-            { id: 31, name: "82.46 1 HỐ 304, VÒI", brand: "ZEVILLA", category: "chau-voi", marketPrice: 1650000, price: 3050000, discountPrice: 0, images: ["images/zevilla1.jpg"], desc: "Chậu rửa bát 1 hố inox 304 kèm vòi Zevilla." },
-            { id: 32, name: "82.46 1 HỐ 304", brand: "ZEVILLA", category: "chau-voi", marketPrice: 1660000, price: 2950000, discountPrice: 0, images: ["images/zevilla2.jpg"], desc: "Chậu rửa bát 1 hố inox 304 Zevilla." },
-            { id: 33, name: "82.46 1 HỐ 304, VÒI (Mã phụ)", brand: "ZEVILLA", category: "chau-voi", marketPrice: 1660000, price: 2980000, discountPrice: 0, images: ["images/zevilla3.jpg"], desc: "Bộ chậu vòi Zevilla cao cấp." },
-            { id: 34, name: "BE32SS (Mã mới)", brand: "BAUER", category: "bep-tu", marketPrice: 3000000, price: 6500000, discountPrice: 0, images: ["images/be32ss.jpg"], desc: "Bếp từ Bauer BE32SS lô mới giá tốt." },
-            { id: 35, name: "BIC35DS Ultra", brand: "BAUER", category: "hut-mui", marketPrice: 2600000, price: 4800000, discountPrice: 0, images: ["images/hutmui5.jpg"], desc: "Hút mùi Bauer BIC35DS Ultra siêu êm." },
-            { id: 36, name: "BE668GTA PLUS (Lô mới)", brand: "BAUER", category: "bep-tu", marketPrice: 5200000, price: 9800000, discountPrice: 0, images: ["images/be668.jpg"], desc: "Bếp từ Bauer BE668GTA PLUS." },
-            { id: 37, name: "BC70ESI", brand: "BAUER", category: "hut-mui", marketPrice: 2680000, price: 4600000, discountPrice: 0, images: ["images/hutmui6.jpg"], desc: "Hút mùi Bauer BC70ESI." },
-            { id: 38, name: "BỘ NỒI WAVE 4 CÁI (Lô mới)", brand: "BAUER", category: "phu-kien", marketPrice: 980000, price: 1500000, discountPrice: 0, images: ["images/bonoiwave.jpg"], desc: "Bộ nồi Wave 4 cái." },
-            { id: 39, name: "SBW6SEU15F", brand: "BAUER", category: "khac", marketPrice: 12200000, price: 16500000, discountPrice: 0, images: ["images/mayruachen.jpg"], desc: "Máy rửa chén độc lập Bauer SBW6SEU15F dung tích lớn." },
-            { id: 40, name: "PT-802.G2", brand: "PRATO", category: "khac", marketPrice: 1850000, price: 3200000, discountPrice: 0, images: ["images/bepgas1.jpg"], desc: "Bếp gas âm Prato PT-802.G2 tiết kiệm gas." },
-            { id: 41, name: "PT-828.G3", brand: "PRATO", category: "khac", marketPrice: 1850000, price: 3200000, discountPrice: 0, images: ["images/bepgas2.jpg"], desc: "Bếp gas âm Prato PT-828.G3 3 lò nấu." },
-            { id: 42, name: "PT-9NL.2V", brand: "PRATO", category: "loc-nuoc", marketPrice: 4350000, price: 7500000, discountPrice: 0, images: ["images/locprato4.jpg"], desc: "Hệ thống lọc nước Prato PT-9NL.2V cao cấp." },
-            { id: 43, name: "PT-9NN.2V PRO", brand: "PRATO", category: "loc-nuoc", marketPrice: 3000000, price: 5500000, discountPrice: 0, images: ["images/locprato5.jpg"], desc: "Máy lọc nước Prato PT-9NN.2V PRO lọc sạch tinh khiết." }
+            {
+                "id": 6,
+                "name": "BẾP TỪ BE638GTA",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 4450000,
+                "price": 8400000,
+                "discountPrice": 0,
+                "images": [
+                    "https://hsn.vn/images/stories/virtuemart/product/bep-tu-2-vung-nau-bauer-be638gta.jpg",
+                    "https://hsn.vn/images/stories/virtuemart/product/kich-thuoc-bep-tu-2-vung-nau-bauer-be638gta.jpg"
+                ],
+                "desc": "Bếp từ 2 vùng nấu Inverter Bauer BE638GTA.",
+                "specs": {
+                    "dacDinh": "",
+                    "congNghe": "",
+                    "tinhNang": "",
+                    "anToan": "",
+                    "thongSo": "",
+                    "xuatXu": ""
+                }
+            },
+            {
+                "id": 7,
+                "name": "BẾP TỪ BE626JPG",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 5000000,
+                "price": 9000000,
+                "discountPrice": 0,
+                "images": ["images/sp_7.jpg"],
+                "desc": "BẾP TỪ BE626JPG - Thương hiệu BAUER (Giá nhập: 5,000,000 đ)."
+            },
+            {
+                "id": 8,
+                "name": "BẾP TỪ BE32SS",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 3900000,
+                "price": 7000000,
+                "discountPrice": 0,
+                "images": ["images/sp_8.jpg"],
+                "desc": "BẾP TỪ BE32SS - Thương hiệu BAUER (Giá nhập: 3,900,000 đ)."
+            },
+            {
+                "id": 9,
+                "name": "BẾP TỪ BE3008SI",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 3300000,
+                "price": 7000000,
+                "discountPrice": 0,
+                "images": ["images/sp_9.jpg"],
+                "desc": "BẾP TỪ BE3008SI - Thương hiệu BAUER (Giá nhập: 3,300,000 đ)."
+            },
+            {
+                "id": 10,
+                "name": "BẾP TỪ BE668GTA PLUS",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 6500000,
+                "price": 10500000,
+                "discountPrice": 0,
+                "images": ["images/sp_10.jpg"],
+                "desc": "BẾP TỪ BE668GTA PLUS - Thương hiệu BAUER (Giá nhập: 6,500,000 đ)."
+            },
+            {
+                "id": 11,
+                "name": "HÚT MÙI BC7035DC GRAND",
+                "brand": "BAUER",
+                "category": "hut-mui",
+                "marketPrice": 3400000,
+                "price": 5100000,
+                "discountPrice": 0,
+                "images": ["images/sp_11.jpg"],
+                "desc": "HÚT MÙI BC7035DC GRAND - Thương hiệu BAUER (Giá nhập: 3,400,000 đ)."
+            },
+            {
+                "id": 12,
+                "name": "HÚT MÙI BC6002B/7002B",
+                "brand": "BAUER",
+                "category": "hut-mui",
+                "marketPrice": 1900000,
+                "price": 2900000,
+                "discountPrice": 0,
+                "images": ["images/sp_12.jpg"],
+                "desc": "HÚT MÙI BC6002B/7002B - Thương hiệu BAUER (Giá nhập: 1,900,000 đ)."
+            },
+            {
+                "id": 13,
+                "name": "HÚT MÙI BC70/90MTV",
+                "brand": "BAUER",
+                "category": "hut-mui",
+                "marketPrice": 3050000,
+                "price": 5000000,
+                "discountPrice": 0,
+                "images": ["images/sp_13.jpg"],
+                "desc": "HÚT MÙI BC70/90MTV - Thương hiệu BAUER (Giá nhập: 3,050,000 đ)."
+            },
+            {
+                "id": 14,
+                "name": "HÚT MÙI BCG70MSC",
+                "brand": "BAUER",
+                "category": "hut-mui",
+                "marketPrice": 2650000,
+                "price": 4300000,
+                "discountPrice": 0,
+                "images": ["images/sp_14.jpg"],
+                "desc": "HÚT MÙI BCG70MSC - Thương hiệu BAUER (Giá nhập: 2,650,000 đ)."
+            },
+            {
+                "id": 15,
+                "name": "BỘ NỒI WAVE 1 BỘ / 4 CÁI",
+                "brand": "BAUER",
+                "category": "phu-kien",
+                "marketPrice": 980000,
+                "price": 1500000,
+                "discountPrice": 0,
+                "images": ["images/sp_15.jpg"],
+                "desc": "BỘ NỒI WAVE 1 BỘ / 4 CÁI - Thương hiệu BAUER (Giá nhập: 980,000 đ)."
+            },
+            {
+                "id": 16,
+                "name": "BỘ NỒI PLUS 1 BỘ / 5 CÁI",
+                "brand": "BAUER",
+                "category": "phu-kien",
+                "marketPrice": 1350000,
+                "price": 1850000,
+                "discountPrice": 0,
+                "images": ["images/sp_16.jpg"],
+                "desc": "BỘ NỒI PLUS 1 BỘ / 5 CÁI - Thương hiệu BAUER (Giá nhập: 1,350,000 đ)."
+            },
+            {
+                "id": 17,
+                "name": "NỒI LUỘC GÀ 1 CÁI",
+                "brand": "BAUER",
+                "category": "phu-kien",
+                "marketPrice": 600000,
+                "price": 800000,
+                "discountPrice": 0,
+                "images": ["images/sp_17.jpg"],
+                "desc": "NỒI LUỘC GÀ 1 CÁI - Thương hiệu BAUER (Giá nhập: 600,000 đ)."
+            },
+            {
+                "id": 18,
+                "name": "CHẬU VÒI NƯỚC GT04-8050",
+                "brand": "GENTO",
+                "category": "chau-voi",
+                "marketPrice": 2450000,
+                "price": 3300000,
+                "discountPrice": 0,
+                "images": ["images/sp_18.jpg"],
+                "desc": "CHẬU VÒI NƯỚC GT04-8050 - Thương hiệu GENTO (Giá nhập: 2,450,000 đ)."
+            },
+            {
+                "id": 19,
+                "name": "CHẬU VÒI NƯỚC GT04 - 7843 NEW ( Inox Chống Xước)",
+                "brand": "GENTO",
+                "category": "chau-voi",
+                "marketPrice": 2600000,
+                "price": 3600000,
+                "discountPrice": 0,
+                "images": ["images/sp_19.jpg"],
+                "desc": "CHẬU VÒI NƯỚC GT04 - 7843 NEW ( Inox Chống Xước) - Thương hiệu GENTO (Giá nhập: 2,600,000 đ)."
+            },
+            {
+                "id": 20,
+                "name": "CHẬU VÒI NƯỚC GT04 - 8048",
+                "brand": "GENTO",
+                "category": "chau-voi",
+                "marketPrice": 2350000,
+                "price": 3350000,
+                "discountPrice": 0,
+                "images": ["images/sp_20.jpg"],
+                "desc": "CHẬU VÒI NƯỚC GT04 - 8048 - Thương hiệu GENTO (Giá nhập: 2,350,000 đ)."
+            },
+            {
+                "id": 21,
+                "name": "VÒI NƯỚC RL - 804",
+                "brand": "GENTO",
+                "category": "chau-voi",
+                "marketPrice": 450000,
+                "price": 750000,
+                "discountPrice": 0,
+                "images": ["images/sp_21.jpg"],
+                "desc": "VÒI NƯỚC RL - 804 - Thương hiệu GENTO (Giá nhập: 450,000 đ)."
+            },
+            {
+                "id": 22,
+                "name": "VÒI NƯỚC RL - 908",
+                "brand": "GENTO",
+                "category": "chau-voi",
+                "marketPrice": 600000,
+                "price": 800000,
+                "discountPrice": 0,
+                "images": ["images/sp_22.jpg"],
+                "desc": "VÒI NƯỚC RL - 908 - Thương hiệu GENTO (Giá nhập: 600,000 đ)."
+            },
+            {
+                "id": 23,
+                "name": "VÒI NƯỚC GT - 206 NEW",
+                "brand": "GENTO",
+                "category": "chau-voi",
+                "marketPrice": 1450000,
+                "price": 1700000,
+                "discountPrice": 0,
+                "images": ["images/sp_23.jpg"],
+                "desc": "VÒI NƯỚC GT - 206 NEW - Thương hiệu GENTO (Giá nhập: 1,450,000 đ)."
+            },
+            {
+                "id": 24,
+                "name": "BẾP TỪ PT-1126PLUS",
+                "brand": "PRATO",
+                "category": "bep-tu",
+                "marketPrice": 1100000,
+                "price": 1850000,
+                "discountPrice": 0,
+                "images": ["images/sp_24.jpg"],
+                "desc": "BẾP TỪ PT-1126PLUS - Thương hiệu PRATO (Giá nhập: 1,100,000 đ)."
+            },
+            {
+                "id": 25,
+                "name": "BẾP TỪ PT-1126T-1",
+                "brand": "PRATO",
+                "category": "bep-tu",
+                "marketPrice": 850000,
+                "price": 1400000,
+                "discountPrice": 0,
+                "images": ["images/sp_25.jpg"],
+                "desc": "BẾP TỪ PT-1126T-1 - Thương hiệu PRATO (Giá nhập: 850,000 đ)."
+            },
+            {
+                "id": 26,
+                "name": "BẾP TỪ PT-028",
+                "brand": "PRATO",
+                "category": "bep-tu",
+                "marketPrice": 3050000,
+                "price": 8300000,
+                "discountPrice": 0,
+                "images": [
+                    "https://cdn1584.cdn4s4.io.vn/media/pt-028%20k%C3%ADnh%20m%E1%BB%9Bi.mp4",
+                    "https://cdn1584.cdn4s4.io.vn/media/avt-bep-tu_1/prato%20-%20%E1%BA%A3nh%20C4%91%E1%BA%A1i%E1%BB%87n%20b%E1%BA%BFp%20t%E1%BB%AB%20pt-028-23.jpg",
+                    "https://cdn1584.cdn4s4.io.vn/media/bvkt-bep-tu/z7904120054438_aa6672e078818f4ae455c9f3ef5b39a3.jpg"
+                ],
+                "desc": "Kính EURO Platinum vát cạnh và bo viền sang trọng, chống trầy xước, chịu nhiệt lên đến 1000°C. Công nghệ Inverter Dualcore giảm 30% điện năng sử dụng. Công nghệ ECO Green tiết kiệm 20% điện năng. Xuất xứ: Trung Quốc - Malaysia. Chức năng an toàn: Hệ thống bảo vệ quá tải, quá nhiệt, ngắn mạch; tự động nhận diện đáy nồi, ngắt tự động khi có sự cố; hệ thống chống trào; khoá an toàn trẻ em; tính năng sôi liu riu. Thông số kỹ thuật: Tổng công suất 2x2200W, điện áp 220 - 240V/50Hz, kích thước sản phẩm 725x425x67mm, kích thước khoét đá 700x400mm.",
+                "specs": {
+                    "dacDinh": "Kính EURO Platinum vát cạnh và bo viền sang trọng, chống trầy xước, chịu nhiệt lên đến 1000°C.",
+                    "congNghe": "Công nghệ Inverter Dualcore giảm 30% điện năng sử dụng.\nCông nghệ ECO Green tiết kiệm 20% điện năng.",
+                    "tinhNang": "Tính năng sôi liu riu.",
+                    "anToan": "Hệ thống bảo vệ quá tải, quá nhiệt, ngắn mạch. Tự động nhận diện đáy nồi, ngắt tự động khi có sự cố. Hệ thống chống trào (tự động ngắt khi trào nước). Chức năng khoá an toàn trẻ em.",
+                    "thongSo": "Tổng công suất: 2x2200W.\nĐiện áp: 220 - 240V/50Hz.\nKích thước sản phẩm: 725x425x67mm.\nKích thước khoét đá: 700x400mm.",
+                    "xuatXu": "Xuất xứ: Trung Quốc - Malaysia."
+                }
+            },
+            {
+                "id": 27,
+                "name": "BẾP TỪ PT-662",
+                "brand": "PRATO",
+                "category": "bep-tu",
+                "marketPrice": 3600000,
+                "price": 9150000,
+                "discountPrice": 0,
+                "images": ["images/sp_27.jpg"],
+                "desc": "BẾP TỪ PT-662 - Thương hiệu PRATO (Giá nhập: 3,600,000 đ)."
+            },
+            {
+                "id": 28,
+                "name": "LỌC NƯỚC PT-9CL.3V",
+                "brand": "PRATO",
+                "category": "loc-nuoc",
+                "marketPrice": 2600000,
+                "price": 4600000,
+                "discountPrice": 0,
+                "images": ["images/sp_28.jpg"],
+                "desc": "LỌC NƯỚC PT-9CL.3V - Thương hiệu PRATO (Giá nhập: 2,600,000 đ)."
+            },
+            {
+                "id": 29,
+                "name": "LỌC NƯỚC PT-9NG",
+                "brand": "PRATO",
+                "category": "loc-nuoc",
+                "marketPrice": 1900000,
+                "price": 3300000,
+                "discountPrice": 0,
+                "images": ["images/sp_29.jpg"],
+                "desc": "LỌC NƯỚC PT-9NG - Thương hiệu PRATO (Giá nhập: 1,900,000 đ)."
+            },
+            {
+                "id": 30,
+                "name": "LỌC NƯỚC PT-9NK.2V",
+                "brand": "PRATO",
+                "category": "loc-nuoc",
+                "marketPrice": 2300000,
+                "price": 4500000,
+                "discountPrice": 0,
+                "images": ["images/sp_30.jpg"],
+                "desc": "LỌC NƯỚC PT-9NK.2V - Thương hiệu PRATO (Giá nhập: 2,300,000 đ)."
+            },
+            {
+                "id": 31,
+                "name": "CHẬU VÒI NƯỚC 82.46 1 HỐ 304, VÒI",
+                "brand": "ZEVILLA",
+                "category": "chau-voi",
+                "marketPrice": 1650000,
+                "price": 3050000,
+                "discountPrice": 0,
+                "images": ["images/sp_31.jpg"],
+                "desc": "CHẬU VÒI NƯỚC 82.46 1 HỐ 304, VÒI - Thương hiệu ZEVILLA (Giá nhập: 1,650,000 đ)."
+            },
+            {
+                "id": 32,
+                "name": "CHẬU VÒI NƯỚC 82.46 1 HỐ 304",
+                "brand": "ZEVILLA",
+                "category": "chau-voi",
+                "marketPrice": 1660000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_32.jpg"],
+                "desc": "CHẬU VÒI NƯỚC 82.46 1 HỐ 304 - Thương hiệu ZEVILLA (Giá nhập: 1,660,000 đ)."
+            },
+            {
+                "id": 33,
+                "name": "CHẬU VÒI NƯỚC 82.46 1 HỐ 304, VÒI",
+                "brand": "ZEVILLA",
+                "category": "chau-voi",
+                "marketPrice": 1660000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_33.jpg"],
+                "desc": "CHẬU VÒI NƯỚC 82.46 1 HỐ 304, VÒI - Thương hiệu ZEVILLA (Giá nhập: 1,660,000 đ)."
+            },
+            {
+                "id": 34,
+                "name": "BẾP TỪ BE32SS",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 3000000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_34.jpg"],
+                "desc": "BẾP TỪ BE32SS - Thương hiệu BAUER (Giá nhập: 3,000,000 đ)."
+            },
+            {
+                "id": 35,
+                "name": "HÚT MÙI BIC35DS Ultra",
+                "brand": "BAUER",
+                "category": "hut-mui",
+                "marketPrice": 2600000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_35.jpg"],
+                "desc": "HÚT MÙI BIC35DS Ultra - Thương hiệu BAUER (Giá nhập: 2,600,000 đ)."
+            },
+            {
+                "id": 36,
+                "name": "BẾP TỪ BE668GTA PLUS",
+                "brand": "BAUER",
+                "category": "bep-tu",
+                "marketPrice": 5200000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_36.jpg"],
+                "desc": "BẾP TỪ BE668GTA PLUS - Thương hiệu BAUER (Giá nhập: 5,200,000 đ)."
+            },
+            {
+                "id": 37,
+                "name": "HÚT MÙI BC70ESI",
+                "brand": "BAUER",
+                "category": "hut-mui",
+                "marketPrice": 2680000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_37.jpg"],
+                "desc": "HÚT MÙI BC70ESI - Thương hiệu BAUER (Giá nhập: 2,680,000 đ)."
+            },
+            {
+                "id": 38,
+                "name": "BỘ NỒI WAVE 1 BỘ / 4 CÁI",
+                "brand": "BAUER",
+                "category": "phu-kien",
+                "marketPrice": 980000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_38.jpg"],
+                "desc": "BỘ NỒI WAVE 1 BỘ / 4 CÁI - Thương hiệu BAUER (Giá nhập: 980,000 đ)."
+            },
+            {
+                "id": 39,
+                "name": "MÁY RỬA CHÉN SBW6SEU15F",
+                "brand": "BAUER",
+                "category": "khac",
+                "marketPrice": 12200000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_39.jpg"],
+                "desc": "MÁY RỬA CHÉN SBW6SEU15F - Thương hiệu BAUER (Giá nhập: 12,200,000 đ)."
+            },
+            {
+                "id": 40,
+                "name": "BẾP GAS PT-802.G2",
+                "brand": "PRATO",
+                "category": "khac",
+                "marketPrice": 1850000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_40.jpg"],
+                "desc": "BẾP GAS PT-802.G2 - Thương hiệu PRATO (Giá nhập: 1,850,000 đ)."
+            },
+            {
+                "id": 41,
+                "name": "BẾP GAS PT-828.G3",
+                "brand": "PRATO",
+                "category": "khac",
+                "marketPrice": 1850000,
+                "price": 0,
+                "discountPrice": 0,
+                "images": ["images/sp_41.jpg"],
+                "desc": "BẾP GAS PT-828.G3 - Thương hiệu PRATO (Giá nhập: 1,850,000 đ)."
+            },
+            {
+                "id": 42,
+                "name": "LỌC NƯỚC PT-9NL.2V",
+                "brand": "PRATO",
+                "category": "loc-nuoc",
+                "marketPrice": 4350000,
+                "price": 7500000,
+                "discountPrice": 0,
+                "images": ["images/sp_42.jpg"],
+                "desc": "LỌC NƯỚC PT-9NL.2V - Thương hiệu PRATO (Giá nhập: 4,350,000 đ)."
+            },
+            {
+                "id": 43,
+                "name": "LỌC NƯỚC PT-9NN.2V PRO",
+                "brand": "PRATO",
+                "category": "loc-nuoc",
+                "marketPrice": 3000000,
+                "price": 5500000,
+                "discountPrice": 0,
+                "images": ["images/sp_43.jpg"],
+                "desc": "LỌC NƯỚC PT-9NN.2V PRO - Thương hiệu PRATO (Giá nhập: 3,000,000 đ)."
+            }
         ];
 
         let products = [...defaultProducts];
@@ -902,7 +1251,6 @@
         let lastProductsSignature = '';
         let isSyncingProducts = false;
 
-        // Trạng thái video theo yêu cầu (mặc định không nạp video khi chưa nhấn)
         let activeDetailVideos = [];
         let isProductVideoOpen = false;
 
@@ -938,7 +1286,7 @@
         }
 
         function formatCompactDesc(rawVal) {
-            const raw = String(rawVal || '').trim();
+            const raw = stripStopAndGoText(String(rawVal || '').trim());
             if (!raw) return '';
             const lines = raw
                 .split(/\r?\n/)
@@ -1098,12 +1446,18 @@
                         const sheetPrice = Number(item.price);
                         const sheetDiscount = Number(item.discountPrice);
 
+                        const parsedSheetSpecs = (item.specs && typeof item.specs === 'object')
+                            ? item.specs
+                            : (typeof item.specs === 'string' && item.specs.trim()
+                                ? parseTextToSixRegions(item.specs)
+                                : prev.specs);
+
                         mapById.set(k, {
                             ...prev,
                             id: rawId
                                 ? (isNaN(Number(rawId)) ? rawId : Number(rawId))
                                 : (prev.id ?? k),
-                            name: rawName || prev.name || '',
+                            name: stripStopAndGoText(rawName || prev.name || ''),
                             brand: (item.brand !== undefined && String(item.brand).trim() !== '') ? String(item.brand).trim() : (prev.brand || ''),
                             category: (item.category !== undefined && String(item.category).trim() !== '') ? String(item.category).trim() : (prev.category || 'khac'),
                             marketPrice: (item.marketPrice !== undefined && String(item.marketPrice).trim() !== '' && !isNaN(sheetMarket) && sheetMarket > 0) ? sheetMarket : (Number(prev.marketPrice) || 0),
@@ -1111,7 +1465,8 @@
                             discountPrice: (item.discountPrice !== undefined && String(item.discountPrice).trim() !== '' && !isNaN(sheetDiscount)) ? sheetDiscount : (Number(prev.discountPrice) || 0),
                             images: mergedImages,
                             videos: mergedVideos,
-                            desc: (item.desc !== undefined && String(item.desc).trim() !== '') ? formatCompactDesc(item.desc) : (prev.desc || '')
+                            desc: (item.desc !== undefined && String(item.desc).trim() !== '') ? formatCompactDesc(item.desc) : (prev.desc || ''),
+                            specs: parsedSheetSpecs
                         });
                     });
 
@@ -1206,6 +1561,11 @@
             });
         }
 
+        function getDisplayPriceText(val) {
+            const num = Number(val) || 0;
+            return num > 0 ? num.toLocaleString('vi-VN') + ' đ' : 'Liên hệ báo giá';
+        }
+
         function handleCardImgError(imgEl) {
             try {
                 const imgs = JSON.parse(decodeURIComponent(imgEl.dataset.imgs || '[]'));
@@ -1287,7 +1647,7 @@
                                     <div class="product-brand">${p.brand || ''}</div>
                                     <div class="product-name">${p.name}</div>
                                     <div class="price-market">Kho: ${Number(p.marketPrice || 0).toLocaleString()} đ</div>
-                                    <div class="product-price">${Number(finalPrice || 0).toLocaleString()} đ ${hasDiscount ? '<span style="font-size:10px; background:#d70018; color:white; padding:1px 4px; border-radius:3px;">GIẢM GIÁ</span>' : ''}</div>
+                                    <div class="product-price">${getDisplayPriceText(finalPrice)} ${hasDiscount ? '<span style="font-size:10px; background:#d70018; color:white; padding:1px 4px; border-radius:3px;">GIẢM GIÁ</span>' : ''}</div>
                                 </div>
                             </div>
                         </div>
@@ -1334,9 +1694,6 @@
             toggleBtn.innerText = isClamped ? 'Xem thêm mô tả' : 'Thu gọn';
         }
 
-        // ============================================================
-        // XỬ LÝ XEM VIDEO KHI KHÁCH NHẤN NÚT (CHUNG CỘT IMAGES VỚI ẢNH)
-        // ============================================================
         function buildSingleVideoNodeHtml(rawUrl) {
             const url = String(rawUrl || '').trim();
             if (!url) return '';
@@ -1430,7 +1787,7 @@
             currentImageIndex = 0;
 
             document.getElementById('dtBrand').innerText = p.brand || '';
-            document.getElementById('dtName').innerText = p.name || '';
+            document.getElementById('dtName').innerText = stripStopAndGoText(p.name || '');
 
             const compactDesc = formatCompactDesc(p.desc || '');
             const descEl = document.getElementById('dtDesc');
@@ -1448,10 +1805,10 @@
                 }
             }
 
-            document.getElementById('dtMarketPrice').innerText = 'Giá kho: ' + Number(p.marketPrice || 0).toLocaleString() + ' đ';
+            document.getElementById('dtMarketPrice').innerText = 'Giá kho: ' + getDisplayPriceText(p.marketPrice);
 
             const finalPrice = (p.discountPrice && p.discountPrice > 0) ? p.discountPrice : p.price;
-            document.getElementById('dtStorePrice').innerText = 'Giá bán: ' + Number(finalPrice || 0).toLocaleString() + ' đ';
+            document.getElementById('dtStorePrice').innerText = 'Giá bán: ' + getDisplayPriceText(finalPrice);
 
             const discountBanner = document.getElementById('dtDiscountBanner');
             if (p.discountPrice && p.discountPrice > 0) {
@@ -1461,14 +1818,15 @@
             }
 
             const specsTable = document.getElementById('dtSpecsTable');
-            if (p.specs) {
+            const sixSpecs = resolveSixRegionSpecs(p);
+            if (sixSpecs) {
                 specsTable.innerHTML = `
-                    <tr><th>Đặc tính sản phẩm</th><td>${p.specs.dacDinh}</td></tr>
-                    <tr><th>Công nghệ Inverter</th><td>${p.specs.congNghe}</td></tr>
-                    <tr><th>Tính năng nổi bật</th><td>${p.specs.tinhNang}</td></tr>
-                    <tr><th>Chức năng an toàn</th><td>${p.specs.anToan}</td></tr>
-                    <tr><th>Thông số kỹ thuật</th><td>${p.specs.thongSo}</td></tr>
-                    <tr><th>Xuất xứ &amp; Bảo hành</th><td>${p.specs.xuatXu}</td></tr>
+                    <tr><th>Đặc tính sản phẩm</th><td>${sixSpecs.dacDinh || 'Đang cập nhật'}</td></tr>
+                    <tr><th>Công nghệ Inverter</th><td>${sixSpecs.congNghe || 'Đang cập nhật'}</td></tr>
+                    <tr><th>Tính năng nổi bật</th><td>${sixSpecs.tinhNang || 'Đang cập nhật'}</td></tr>
+                    <tr><th>Chức năng an toàn</th><td>${sixSpecs.anToan || 'Đang cập nhật'}</td></tr>
+                    <tr><th>Thông số kỹ thuật</th><td>${sixSpecs.thongSo || 'Đang cập nhật'}</td></tr>
+                    <tr><th>Xuất xứ &amp; Bảo hành</th><td>${sixSpecs.xuatXu || 'Đang cập nhật'}</td></tr>
                 `;
             } else {
                 specsTable.innerHTML = `<tr><th>Mô tả chi tiết</th><td>${compactDesc || 'Đang cập nhật'}</td></tr>`;
@@ -1608,9 +1966,6 @@
             document.getElementById('cartCount').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
         }
 
-        // ============================================================
-        // BOTTOM SHEET THANH TOÁN & CHUYỂN KHOẢN TRƯỚC / MOMO / QR
-        // ============================================================
         let tempPaymentCode = 'COD';
         let tempPaymentLabel = 'COD - Thanh toán khi giao';
 
@@ -1693,6 +2048,11 @@
             document.getElementById('selectedPaymentLabel').innerText = tempPaymentLabel;
             closePaymentSheet();
             refreshActivePrepayPreview();
+
+            const prepayCard = document.getElementById('prepaySummaryCard');
+            if (prepayCard && prepayCard.style.display !== 'none') {
+                prepayCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
 
         function refreshActivePrepayPreview() {
